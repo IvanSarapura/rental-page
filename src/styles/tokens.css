@@ -1,0 +1,10 @@
+:root {
+  /* Colores */
+  --color-background: #FAFAFA;
+  --color-foreground: #171717;
+  --color-primary: #171717;
+  --color-on-primary: #ffffff;
+
+  /* Espaciado */
+  --spacing-navbar: 1.5rem 2rem;
+}

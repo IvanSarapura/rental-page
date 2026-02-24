@@ -1,0 +1,50 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-navbar, 1.5rem 2rem);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  color: var(--color-foreground);
+}
+
+.logo,
+.navLink {
+  color: inherit;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.05em;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navLink {
+  font-size: 0.9375rem;
+}
+
+.navLink:hover {
+  opacity: 0.8;
+}
+
+.cta {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  border-radius: 0.25rem;
+}
+
+.cta:hover {
+  opacity: 0.9;
+}
