@@ -4,6 +4,7 @@ import LogosSection from "@/components/sections/home/LogosSection";
 import FeaturedPropertiesSection from "@/components/sections/home/FeaturedPropertiesSection";
 import OfficeSpotlightSection from "@/components/sections/home/OfficeSpotlightSection";
 import PeaceOfMindSection from "@/components/sections/home/PeaceOfMindSection";
+import WorkspaceInquirySection from "@/components/sections/home/WorkspaceInquirySection";
 
 export default function HomePage() {
   return (
@@ -14,6 +15,7 @@ export default function HomePage() {
       <FeaturedPropertiesSection />
       <OfficeSpotlightSection />
       <PeaceOfMindSection />
+      <WorkspaceInquirySection />
     </main>
   );
 }
