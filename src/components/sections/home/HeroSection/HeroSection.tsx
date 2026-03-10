@@ -21,7 +21,10 @@ export default function HeroSection() {
         </div>
         <div className={styles.searchWrapper}>
           <div className={styles.searchCard}>
-            <div className={styles.searchInput}>
+            <span className={styles.searchMobileText}>
+              Find an office near you
+            </span>
+            <div className={styles.searchDesktopInput}>
               <Image
                 src="/icons/point.svg"
                 alt=""
@@ -32,6 +35,14 @@ export default function HeroSection() {
               />
               <span className={styles.searchPlaceholder}>Search here</span>
             </div>
+            <Image
+              src="/icons/Search.svg"
+              alt=""
+              width={24}
+              height={24}
+              className={styles.searchMobileIcon}
+              aria-hidden
+            />
             <div className={styles.searchActions}>
               <button type="button" className={styles.btnSecondary}>
                 Search Nearby
