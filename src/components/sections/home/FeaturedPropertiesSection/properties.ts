@@ -10,6 +10,7 @@ export type Property = {
   area: number;
   capacity: number;
   image: string;
+  imagePosition?: string;
   tag?: string;
 };
 
@@ -25,7 +26,8 @@ export const featuredProperties: readonly Property[] = [
     reviewCount: 32,
     area: 45,
     capacity: 6,
-    image: "",
+    image: "/images/building3.png",
+    imagePosition: "center 42%",
     tag: "Featured",
   },
   {
@@ -39,7 +41,8 @@ export const featuredProperties: readonly Property[] = [
     reviewCount: 18,
     area: 38,
     capacity: 4,
-    image: "",
+    image: "/images/building1.png",
+    imagePosition: "center 80%",
   },
   {
     id: "3",
@@ -52,7 +55,8 @@ export const featuredProperties: readonly Property[] = [
     reviewCount: 24,
     area: 30,
     capacity: 5,
-    image: "",
+    image: "/images/building2.png",
+    imagePosition: "center 52%",
     tag: "New",
   },
   {
@@ -66,7 +70,8 @@ export const featuredProperties: readonly Property[] = [
     reviewCount: 41,
     area: 52,
     capacity: 8,
-    image: "",
+    image: "/images/building4.png",
+    imagePosition: "center 80%",
   },
   {
     id: "5",
@@ -79,7 +84,8 @@ export const featuredProperties: readonly Property[] = [
     reviewCount: 15,
     area: 40,
     capacity: 6,
-    image: "",
+    image: "/images/building5.png",
+    imagePosition: "center 65%",
   },
   {
     id: "6",
@@ -92,7 +98,8 @@ export const featuredProperties: readonly Property[] = [
     reviewCount: 29,
     area: 35,
     capacity: 10,
-    image: "",
+    image: "/images/building3.png",
+    imagePosition: "center 90%",
     tag: "Popular",
   },
   {
@@ -106,7 +113,8 @@ export const featuredProperties: readonly Property[] = [
     reviewCount: 11,
     area: 60,
     capacity: 8,
-    image: "",
+    image: "/images/building5.png",
+    imagePosition: "center 20%",
   },
   {
     id: "8",
@@ -119,6 +127,7 @@ export const featuredProperties: readonly Property[] = [
     reviewCount: 20,
     area: 42,
     capacity: 6,
-    image: "",
+    image: "/images/building6.png",
+    imagePosition: "center 80%",
   },
 ] as const;

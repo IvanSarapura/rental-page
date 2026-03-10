@@ -7,7 +7,7 @@ type PropertyCardProps = {
 };
 
 export default function PropertyCard({ property }: PropertyCardProps) {
-  const { title, location, price, currency, period, rating, reviewCount, area, capacity, image, tag } = property;
+  const { title, location, price, currency, period, rating, reviewCount, area, capacity, image, imagePosition, tag } = property;
 
   return (
     <article className={styles.card}>
@@ -19,6 +19,7 @@ export default function PropertyCard({ property }: PropertyCardProps) {
             fill
             className={styles.image}
             sizes="(max-width: 767px) 100vw, (max-width: 1199px) 50vw, 25vw"
+            style={imagePosition ? { objectPosition: imagePosition } : undefined}
           />
         ) : null}
         {tag ? <span className={styles.tag}>{tag}</span> : null}
