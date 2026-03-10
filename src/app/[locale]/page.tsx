@@ -2,7 +2,7 @@ import HeroSection from "@/components/sections/home/HeroSection";
 import TrustedBySection from "@/components/sections/home/TrustedBySection";
 import LogosSection from "@/components/sections/home/LogosSection";
 import FeaturedPropertiesSection from "@/components/sections/home/FeaturedPropertiesSection";
-import HighlightsSection from "@/components/sections/home/HighlightsSection";
+import OfficeSpotlightSection from "@/components/sections/home/OfficeSpotlightSection";
 import PeaceOfMindSection from "@/components/sections/home/PeaceOfMindSection";
 
 export default function HomePage() {
@@ -12,7 +12,7 @@ export default function HomePage() {
       <TrustedBySection />
       <LogosSection />
       <FeaturedPropertiesSection />
-      <HighlightsSection />
+      <OfficeSpotlightSection />
       <PeaceOfMindSection />
     </main>
   );

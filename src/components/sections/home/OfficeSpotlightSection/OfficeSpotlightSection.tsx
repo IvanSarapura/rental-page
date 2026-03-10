@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Container from "@/components/ui/Container";
-import { highlights } from "./highlights";
-import type { SplitCard } from "./highlights";
-import styles from "./HighlightsSection.module.css";
+import { spotlights } from "./spotlights";
+import type { SplitCard } from "./spotlights";
+import styles from "./OfficeSpotlightSection.module.css";
 
 function TextSide({ text }: { text: SplitCard["text"] }) {
   return (
@@ -30,12 +30,12 @@ function ImageSide({ image }: { image: SplitCard["image"] }) {
   );
 }
 
-export default function HighlightsSection() {
+export default function OfficeSpotlightSection() {
   return (
     <section className={styles.section}>
       <Container>
         <div className={styles.stack}>
-          {highlights.map((card) => (
+          {spotlights.map((card) => (
             <div key={card.id} className={styles.card}>
               {card.layout === "text-image" ? (
                 <>

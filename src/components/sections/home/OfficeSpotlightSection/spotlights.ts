@@ -14,7 +14,7 @@ export type SplitCard = {
   };
 };
 
-export const highlights: readonly SplitCard[] = [
+export const spotlights: readonly SplitCard[] = [
   {
     id: "prime-locations",
     layout: "text-image",
