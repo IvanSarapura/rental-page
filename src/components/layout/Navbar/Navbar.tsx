@@ -123,6 +123,14 @@ export default function Navbar() {
               />
             </div>
           </div>
+
+          <Link
+            href="/contact"
+            className={styles.cta}
+            onClick={closeMenu}
+          >
+            Get in touch
+          </Link>
         </div>
       </div>
     </header>

@@ -172,6 +172,25 @@
   opacity: 0.8;
 }
 
+.cta {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  padding: var(--space-3) var(--space-6);
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 0.25rem;
+  min-height: var(--touch-target-min);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+.cta:hover {
+  opacity: 0.9;
+}
+
 /* drawer fondo claro → enlaces y logo oscuros */
 @media (max-width: 767px) {
   .navWrapper .navLink {
@@ -185,6 +204,10 @@
   /* ligera sangría para diferenciar lista de enlaces del logo */
   .nav {
     padding-left: var(--space-4);
+  }
+
+  .cta {
+    display: none;
   }
 
 .navFooter {
@@ -270,5 +293,6 @@
     font-size: 0.9375rem;
     margin-top: 0;
     align-self: auto;
+    display: inline-flex;
   }
 }
