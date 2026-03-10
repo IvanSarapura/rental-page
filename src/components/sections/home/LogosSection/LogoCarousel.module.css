@@ -1,0 +1,71 @@
+/*
+ * Carrusel infinito mobile.
+ * Técnica: dos copias idénticas del track se desplazan con una keyframe.
+ * Al terminar la animación el track vuelve al inicio sin salto visible.
+ */
+
+.wrapper {
+  overflow: hidden;
+  width: 100%;
+  /* fade en los extremos para dar profundidad */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: scroll var(--carousel-duration, 22s) linear infinite;
+}
+
+/* respeta preferencias de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+}
+
+.item {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /*
+   * padding-right en lugar de gap en el track:
+   * cada item "lleva" su propio espacio, haciendo
+   * las dos mitades del track matemáticamente idénticas
+   * y garantizando que -50% coincide exactamente con el
+   * inicio de la segunda copia → loop sin salto.
+   */
+  padding-right: 3rem;
+}
+
+.logo {
+  height: 1.75rem;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* desplaza exactamente una copia del track (mitad del ancho total) */
+    transform: translateX(-50%);
+  }
+}

@@ -1,0 +1,49 @@
+.section {
+  background-color: #ffffff;
+  padding: var(--space-8) 0;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: var(--space-10) 0;
+  }
+}
+
+/* ── Desktop: logos estáticos centrados ─────────────────── */
+.staticLogos {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .staticLogos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+  }
+}
+
+.staticItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.staticLogo {
+  height: 2rem;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* ── Mobile: carrusel ────────────────────────────────────── */
+.carouselWrapper {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .carouselWrapper {
+    display: none;
+  }
+}
