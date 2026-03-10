@@ -1,50 +1,201 @@
 .navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--spacing-navbar, 1.5rem 2rem);
+  padding: var(--navbar-padding-y) 0;
+  padding-top: calc(var(--navbar-padding-y) + env(safe-area-inset-top, 0));
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   z-index: 10;
-  color: var(--color-foreground);
 }
 
 .logo,
 .navLink {
-  color: inherit;
+  color: #ffffff;
+}
+
+.navbarInner {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding-x);
+  padding-right: var(--container-padding-x);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  min-width: 0;
 }
 
 .logo {
-  font-weight: 700;
+  font-family: var(--font-poppins), "Poppins", sans-serif;
+  font-weight: 300;
   font-size: 1.25rem;
   letter-spacing: 0.05em;
+  min-height: var(--touch-target-min);
+  min-width: 0;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* hamburger solo mobile */
+.menuButton {
+  min-width: var(--touch-target-min);
+  min-height: var(--touch-target-min);
+  width: var(--touch-target-min);
+  height: var(--touch-target-min);
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #ffffff;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--space-2);
+}
+
+.menuButton:hover {
+  opacity: 0.85;
+}
+
+.menuButton:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.menuIcon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+/* drawer overlay mobile */
+.navWrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 9;
+  padding-top: calc(var(--navbar-padding-y) * 2 + 1.5rem + env(safe-area-inset-top, 0));
+  padding-bottom: calc(var(--space-6) + env(safe-area-inset-bottom, 0));
+  padding-left: calc(var(--container-padding-x) + env(safe-area-inset-left, 0));
+  padding-right: calc(var(--container-padding-x) + env(safe-area-inset-right, 0));
+  background: var(--color-background);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  visibility: hidden;
+  opacity: 0;
+  transform: translateX(100%);
+  transition:
+    visibility 0.2s ease,
+    opacity 0.2s ease,
+    transform 0.2s ease;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.navWrapperOpen {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .nav {
   display: flex;
-  align-items: center;
-  gap: 2rem;
+  flex-direction: column;
+  gap: var(--space-2);
 }
 
 .navLink {
-  font-size: 0.9375rem;
+  font-size: 1.125rem;
+  padding: var(--space-3) 0;
+  min-height: var(--touch-target-min);
+  display: inline-flex;
+  align-items: center;
 }
 
 .navLink:hover {
   opacity: 0.8;
 }
 
+/* drawer fondo claro → enlaces oscuros */
+@media (max-width: 767px) {
+  .navWrapper .navLink {
+    color: var(--color-foreground);
+  }
+}
+
 .cta {
   background-color: var(--color-primary);
   color: var(--color-on-primary);
-  padding: 0.75rem 1.5rem;
-  font-size: 0.9375rem;
+  padding: var(--space-3) var(--space-6);
+  font-size: 1rem;
   font-weight: 500;
   border-radius: 0.25rem;
+  min-height: var(--touch-target-min);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  margin-top: auto;
 }
 
 .cta:hover {
   opacity: 0.9;
+}
+
+/* desktop: nav horizontal */
+@media (min-width: 768px) {
+  .menuButton {
+    display: none;
+  }
+
+  .navWrapper {
+    position: static;
+    padding: 0;
+    flex: 1;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-8);
+    background: transparent;
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    transition: none;
+    min-width: 0;
+  }
+
+  .navCenter {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nav {
+    flex-direction: row;
+    gap: var(--space-8);
+  }
+
+  .navLink {
+    font-size: 0.9375rem;
+    padding: var(--space-2) 0;
+    min-height: auto;
+  }
+
+  .cta {
+    min-height: auto;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9375rem;
+    margin-top: 0;
+    align-self: auto;
+  }
 }

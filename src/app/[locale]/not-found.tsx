@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Container from "@/components/ui/Container";
 
 export default function NotFound() {
   return (
@@ -9,13 +10,15 @@ export default function NotFound() {
         alignItems: "center",
         justifyContent: "center",
         minHeight: "100vh",
-        padding: "1rem",
+        padding: "1rem 0",
         textAlign: "center",
       }}
     >
-      <h1>404</h1>
-      <p>Página no encontrada</p>
-      <Link href="/">Volver al inicio</Link>
+      <Container>
+        <h1>404</h1>
+        <p>Página no encontrada</p>
+        <Link href="/">Volver al inicio</Link>
+      </Container>
     </main>
   );
 }
