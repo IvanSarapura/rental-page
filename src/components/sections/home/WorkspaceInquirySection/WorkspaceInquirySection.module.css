@@ -135,6 +135,13 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
+  position: relative; /* Necesario para que z-index funcione */
+  z-index: 0;
+}
+
+/* Eleva el campo activo para que su tooltip aparezca sobre los demás */
+.field:has(.errorAsterisk:hover) {
+  z-index: 10;
 }
 
 .label {
@@ -193,4 +200,127 @@
 
 .submitBtn:active {
   transform: scale(0.98);
+}
+
+/* ── Wrapper relativo para posicionar el asterisco ─────────── */
+.inputWrapper {
+  position: relative;
+}
+
+/* ── Input con error: borde rojo + espacio para el asterisco ── */
+.inputError {
+  border-color: #e53e3e;
+  background-color: #fff5f5;
+  /* Reserva espacio a la derecha para no tapar el asterisco */
+  padding-right: 2.25rem;
+}
+
+.inputError:focus {
+  border-color: #e53e3e;
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.12);
+}
+
+/* ── Asterisco dentro del input ────────────────────────────── */
+.errorAsterisk {
+  position: absolute;
+  right: var(--space-4);
+  top: 50%;
+  transform: translateY(-50%);
+  color: #e53e3e;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: default;
+  /* Necesario para que ::after posicione el tooltip */
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ── Tooltip minimalista ───────────────────────────────────── */
+.errorAsterisk::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  background: #ffffff;
+  color: #e53e3e;
+  font-family: var(--font-poppins), "Poppins", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid #fecaca;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 100;
+}
+
+.errorAsterisk:hover::after {
+  opacity: 1;
+}
+
+/* ── Estado de éxito ───────────────────────────────────────── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.successState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-5);
+  padding: var(--space-8) var(--space-4);
+  animation: fadeInUp 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (min-width: 768px) {
+  .successState {
+    padding: var(--space-10) var(--space-8);
+  }
+}
+
+.successIcon {
+  width: 4rem;
+  height: 4rem;
+  color: #22c55e;
+  flex-shrink: 0;
+}
+
+.successIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.successTitle {
+  margin: 0;
+  font-family: var(--font-plus-jakarta-sans), "Plus Jakarta Sans", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--color-foreground);
+}
+
+@media (min-width: 768px) {
+  .successTitle {
+    font-size: 1.875rem;
+  }
+}
+
+.successBody {
+  margin: 0;
+  font-family: var(--font-poppins), "Poppins", sans-serif;
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--color-muted);
+  max-width: 40ch;
 }
