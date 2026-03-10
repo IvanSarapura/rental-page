@@ -12,10 +12,16 @@ export default function HomePage() {
       <HeroSection />
       <TrustedBySection />
       <LogosSection />
-      <FeaturedPropertiesSection />
+      <div id="offices">
+        <FeaturedPropertiesSection />
+      </div>
       <OfficeSpotlightSection />
-      <PeaceOfMindSection />
-      <WorkspaceInquirySection />
+      <div id="about">
+        <PeaceOfMindSection />
+      </div>
+      <div id="contact">
+        <WorkspaceInquirySection />
+      </div>
     </main>
   );
 }

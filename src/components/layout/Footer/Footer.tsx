@@ -4,10 +4,10 @@ import Container from "@/components/ui/Container";
 import styles from "./Footer.module.css";
 
 const quickLinks = [
-  { href: "/",       label: "Home"               },
-  { href: "/about",  label: "About"              },
-  { href: "/search", label: "Listings"           },
-  { href: "/terms",  label: "Terms and Conditions"},
+  { href: "/",        label: "Home"                },
+  { href: "/#about",  label: "About"               },
+  { href: "/search",  label: "Listings"            },
+  { href: "/terms",   label: "Terms and Conditions"},
 ] as const;
 
 const discoverLinks = [

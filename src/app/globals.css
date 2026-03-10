@@ -12,6 +12,7 @@ html {
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
 }
 
 html,
@@ -44,7 +45,7 @@ a {
   text-decoration: none;
 }
 
-/* container con márgenes Figma */
+/* container with margins */
 .container {
   width: 100%;
   max-width: var(--container-max-width);

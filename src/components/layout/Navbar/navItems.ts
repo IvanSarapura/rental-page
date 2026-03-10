@@ -4,9 +4,8 @@ export type NavItem = {
 };
 
 export const navItems: readonly NavItem[] = [
-  { href: "/", label: "Home" },
-  { href: "/search", label: "Offices" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
+  { href: "/",        label: "Home"    },
+  { href: "/#offices", label: "Offices" },
+  { href: "/#about",   label: "About"   },
+  { href: "/#contact", label: "Contact" },
 ] as const;
-

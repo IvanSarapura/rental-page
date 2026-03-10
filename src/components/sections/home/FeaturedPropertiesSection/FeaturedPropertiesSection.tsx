@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Link } from "@/i18n/navigation";
 import Container from "@/components/ui/Container";
 import PropertyCard from "@/components/ui/PropertyCard";
 import { featuredProperties } from "./properties";
@@ -26,26 +27,43 @@ export default function FeaturedPropertiesSection() {
           </div>
 
           <div className={styles.filters} role="group" aria-label="Filter properties">
-            {propertyFilters.map((filter) => (
-              <button
-                key={filter.id}
-                type="button"
-                className={`${styles.filterBtn} ${variantClass[filter.variant]}`}
-                aria-pressed={filter.id === "near-me"}
-              >
-                {filter.label}
-                {filter.icon && (
-                  <Image
-                    src={filter.icon}
-                    alt=""
-                    width={16}
-                    height={16}
-                    className={styles.filterIcon}
-                    aria-hidden
-                  />
-                )}
-              </button>
-            ))}
+            {propertyFilters.map((filter) => {
+              const className = `${styles.filterBtn} ${variantClass[filter.variant]}`;
+              const content = (
+                <>
+                  {filter.label}
+                  {filter.icon && (
+                    <Image
+                      src={filter.icon}
+                      alt=""
+                      width={16}
+                      height={16}
+                      className={styles.filterIcon}
+                      aria-hidden
+                    />
+                  )}
+                </>
+              );
+
+              return filter.href ? (
+                <Link
+                  key={filter.id}
+                  href={filter.href}
+                  className={className}
+                >
+                  {content}
+                </Link>
+              ) : (
+                <button
+                  key={filter.id}
+                  type="button"
+                  className={className}
+                  aria-pressed={filter.id === "near-me"}
+                >
+                  {content}
+                </button>
+              );
+            })}
           </div>
         </div>
 
