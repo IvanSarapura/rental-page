@@ -1,0 +1,273 @@
+/* ── Footer oscuro ─────────────────────────────────────────── */
+.footer {
+  background-color: #171717;
+  color: #ffffff;
+  padding-top: var(--space-10);
+}
+
+@media (min-width: 768px) {
+  .footer {
+    padding-top: 4rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .footer {
+    padding-top: 5rem;
+  }
+}
+
+/* ── Grid de columnas ──────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-10);
+  padding-bottom: var(--space-10);
+}
+
+@media (min-width: 576px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-8);
+  }
+}
+
+@media (min-width: 992px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-8);
+    padding-bottom: 4rem;
+  }
+}
+
+/* ── Columna Brand (izquierda) ─────────────────────────────── */
+.brandCol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.logo {
+  font-family: var(--font-poppins), "Poppins", sans-serif;
+  font-weight: 300;
+  font-size: 1.5rem;
+  letter-spacing: 0.26rem;
+  color: #ffffff;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.logo:hover {
+  opacity: 0.85;
+}
+
+.contactList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.contactItem {
+  font-family: var(--font-poppins), "Poppins", sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.contactItem a {
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.contactItem a:hover {
+  color: #ffffff;
+}
+
+/* ── Columnas de links (Quick Links / Discover) ────────────── */
+.linksCol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.colTitle {
+  margin: 0;
+  font-family: var(--font-plus-jakarta-sans), "Plus Jakarta Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.01em;
+}
+
+.linkList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.linkItem a {
+  font-family: var(--font-poppins), "Poppins", sans-serif;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.linkItem a:hover {
+  color: #ffffff;
+}
+
+/* ── Columna Newsletter + Social ───────────────────────────── */
+.newsletterCol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+/* Newsletter */
+.newsletterBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.newsletterTitle {
+  margin: 0;
+  font-family: var(--font-plus-jakarta-sans), "Plus Jakarta Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.newsletterForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+@media (min-width: 400px) {
+  .newsletterForm {
+    flex-direction: row;
+    align-items: stretch;
+  }
+}
+
+@media (min-width: 992px) {
+  .newsletterForm {
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 1200px) {
+  .newsletterForm {
+    flex-direction: row;
+    align-items: stretch;
+  }
+}
+
+.newsletterInput {
+  flex: 1;
+  min-height: var(--touch-target-min);
+  padding: 0.625rem var(--space-4);
+  font-family: var(--font-poppins), "Poppins", sans-serif;
+  font-size: 0.875rem;
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.75rem;
+  outline: none;
+  transition: border-color 0.15s ease;
+  box-sizing: border-box;
+}
+
+.newsletterInput::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.newsletterInput:focus {
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.newsletterBtn {
+  min-height: var(--touch-target-min);
+  padding: 0.625rem var(--space-5);
+  font-family: var(--font-poppins), "Poppins", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #171717;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.15s ease;
+  flex-shrink: 0;
+}
+
+.newsletterBtn:hover {
+  opacity: 0.9;
+}
+
+/* Social */
+.socialBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.socialTitle {
+  margin: 0;
+  font-family: var(--font-plus-jakarta-sans), "Plus Jakarta Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.socialRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  opacity: 0.65;
+  transition: opacity 0.15s ease;
+}
+
+.socialLink:hover {
+  opacity: 1;
+}
+
+.socialIcon {
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  /* Convierte el SVG negro a blanco */
+  filter: brightness(0) invert(1);
+}
+
+/* ── Barra inferior de copyright ───────────────────────────── */
+.bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: var(--space-5) 0;
+}
+
+.copyright {
+  margin: 0;
+  font-family: var(--font-poppins), "Poppins", sans-serif;
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.4);
+  text-align: center;
+}

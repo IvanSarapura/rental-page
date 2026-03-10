@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 
 type LocaleLayoutProps = {
   children: ReactNode;
@@ -11,6 +12,7 @@ export default async function LocaleLayout({ children }: LocaleLayoutProps) {
     <>
       <Navbar />
       {children}
+      <Footer />
     </>
   );
 }
