@@ -69,11 +69,14 @@
   min-height: 14rem;
   border-radius: 1rem;
   overflow: hidden;
+  /* En mobile la imagen siempre va al final (debajo del texto) */
+  order: 2;
 }
 
 @media (min-width: 768px) {
   .imageSide {
-    /* Se estira para igualar la altura del lado de texto */
+    /* En desktop se restaura el orden natural del DOM */
+    order: unset;
     align-self: stretch;
     min-height: unset;
   }
@@ -91,10 +94,13 @@
   justify-content: center;
   gap: var(--space-4);
   padding: var(--space-2) var(--space-2);
+  /* En mobile el texto siempre va primero (arriba de la imagen) */
+  order: 1;
 }
 
 @media (min-width: 768px) {
   .textSide {
+    order: unset;
     padding: var(--space-4);
     gap: var(--space-4);
   }
