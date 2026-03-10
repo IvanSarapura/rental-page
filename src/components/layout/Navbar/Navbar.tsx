@@ -1,15 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import { useState, useCallback, useEffect } from "react";
 import { Link } from "@/i18n/navigation";
 import styles from "./Navbar.module.css";
-
-const navItems = [
-  { href: "/", label: "Home" },
-  { href: "/search", label: "Offices" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
-] as const;
+import { navItems } from "./navItems";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -36,10 +31,10 @@ export default function Navbar() {
           onClick={() => setMenuOpen((open) => !open)}
           aria-expanded={menuOpen}
           aria-controls="nav-menu"
-          aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+          aria-label="Abrir menú"
         >
           <span className={styles.menuIcon} aria-hidden>
-            {menuOpen ? "✕" : "☰"}
+            ☰
           </span>
         </button>
 
@@ -48,6 +43,31 @@ export default function Navbar() {
           className={`${styles.navWrapper} ${menuOpen ? styles.navWrapperOpen : ""}`}
           data-open={menuOpen}
         >
+          <div className={styles.navHeader}>
+            <Link
+              href="/"
+              className={styles.navHeaderLogo}
+              onClick={closeMenu}
+            >
+              RENTAL
+            </Link>
+            <button
+              type="button"
+              className={styles.navHeaderClose}
+              onClick={closeMenu}
+              aria-label="Cerrar menú"
+            >
+              <Image
+                src="/icons/x.svg"
+                alt=""
+                width={24}
+                height={24}
+                className={styles.navHeaderCloseIcon}
+                aria-hidden
+              />
+            </button>
+          </div>
+
           <div className={styles.navCenter}>
             <nav className={styles.nav}>
               {navItems.map(({ href, label }) => (
@@ -62,13 +82,47 @@ export default function Navbar() {
               ))}
             </nav>
           </div>
-          <Link
-            href="/contact"
-            className={styles.cta}
-            onClick={closeMenu}
-          >
-            Get in touch
-          </Link>
+
+          <div className={styles.navFooter}>
+            <p className={styles.followTitle}>Follow Us</p>
+            <div className={styles.socialRow}>
+              <Image
+                src="/icons/facebook.svg"
+                alt="Follow on Facebook"
+                width={24}
+                height={24}
+                className={styles.socialIcon}
+              />
+              <Image
+                src="/icons/youtube.svg"
+                alt="Follow on YouTube"
+                width={24}
+                height={24}
+                className={styles.socialIcon}
+              />
+              <Image
+                src="/icons/dribbble.svg"
+                alt="Follow on Dribbble"
+                width={24}
+                height={24}
+                className={styles.socialIcon}
+              />
+              <Image
+                src="/icons/figma.svg"
+                alt="Follow on Figma"
+                width={24}
+                height={24}
+                className={styles.socialIcon}
+              />
+              <Image
+                src="/icons/whatsapp.svg"
+                alt="Contact on WhatsApp"
+                width={24}
+                height={24}
+                className={styles.socialIcon}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </header>
