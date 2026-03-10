@@ -5,6 +5,10 @@
   --color-primary: #171717;
   --color-on-primary: #ffffff;
   --Color-Text-Text: #fff;
+  --color-muted: #73788C;
+  --color-border: #E5E5E5;
+  --color-surface: #ffffff;
+  --color-surface-alt: #F5F5F5;
 
   /* breakpoints min-width */
   --bp-sm: 576px;

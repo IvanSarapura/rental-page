@@ -1,6 +1,7 @@
 import HeroSection from "@/components/sections/home/HeroSection";
 import TrustedBySection from "@/components/sections/home/TrustedBySection";
 import LogosSection from "@/components/sections/home/LogosSection";
+import FeaturedPropertiesSection from "@/components/sections/home/FeaturedPropertiesSection";
 
 export default function HomePage() {
   return (
@@ -8,6 +9,7 @@ export default function HomePage() {
       <HeroSection />
       <TrustedBySection />
       <LogosSection />
+      <FeaturedPropertiesSection />
     </main>
   );
 }

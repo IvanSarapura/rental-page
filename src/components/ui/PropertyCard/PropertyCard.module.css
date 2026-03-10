@@ -1,0 +1,135 @@
+.card {
+  background-color: var(--color-surface);
+  border-radius: 1rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+/* ── Image area ───────────────────────────────────────────── */
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-color: var(--color-surface-alt);
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.tag {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  font-family: var(--font-poppins), "Poppins", sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.625rem;
+  border-radius: 2rem;
+}
+
+/* ── Body ─────────────────────────────────────────────────── */
+.body {
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  flex: 1;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-plus-jakarta-sans), "Plus Jakarta Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--color-foreground);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-family: var(--font-poppins), "Poppins", sans-serif;
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+}
+
+.locationIcon {
+  flex-shrink: 0;
+}
+
+/* ── Meta row (área + capacidad) ──────────────────────────── */
+.meta {
+  display: flex;
+  gap: var(--space-4);
+  font-family: var(--font-poppins), "Poppins", sans-serif;
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* ── Footer (precio + rating) ─────────────────────────────── */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+
+.price {
+  font-family: var(--font-plus-jakarta-sans), "Plus Jakarta Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-foreground);
+}
+
+.pricePeriod {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--color-muted);
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-family: var(--font-poppins), "Poppins", sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-foreground);
+}
+
+.star {
+  color: #F5A623;
+  font-size: 0.875rem;
+  line-height: 1;
+}
+
+.reviewCount {
+  color: var(--color-muted);
+  font-weight: 400;
+}
