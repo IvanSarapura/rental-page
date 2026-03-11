@@ -1,9 +1,10 @@
-/* hero full viewport, dvh para mobile */
+/* hero full viewport — svh fija el tamaño al viewport con URL bar visible,
+   evitando el salto de layout cuando la barra del navegador desaparece en mobile */
 .hero {
   position: relative;
   width: 100%;
-  min-height: 100vh;
-  min-height: 100dvh;
+  min-height: 100vh;    /* fallback navegadores sin soporte svh */
+  min-height: 100svh;   /* small viewport height: no cambia al ocultar la URL bar */
   display: flex;
   align-items: flex-end;
   justify-content: center;

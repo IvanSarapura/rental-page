@@ -34,6 +34,9 @@
   --safe-area-inset-top: env(safe-area-inset-top, 0);
   --safe-area-inset-bottom: env(safe-area-inset-bottom, 0);
 
+  /* Viewport height seguro para mobile: no cambia al ocultar/mostrar la URL bar */
+  --vh-full: 100svh;
+
   /* hero overlay max 40% */
   --hero-overlay-opacity: 0.4;
   --hero-overlay-stop: 68%;
