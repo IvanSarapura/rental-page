@@ -172,6 +172,10 @@
   opacity: 0.8;
 }
 
+.mobileOnlyNavLink {
+  display: none;
+}
+
 .cta {
   background-color: var(--color-primary);
   color: var(--color-on-primary);
@@ -195,6 +199,10 @@
 @media (max-width: 767px) {
   .navWrapper .navLink {
     color: var(--color-foreground);
+  }
+
+  .mobileOnlyNavLink {
+    display: inline-flex;
   }
 
   .navHeader {

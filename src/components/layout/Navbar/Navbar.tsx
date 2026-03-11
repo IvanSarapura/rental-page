@@ -80,6 +80,15 @@ export default function Navbar() {
                   {label}
                 </Link>
               ))}
+
+              {/* Solo mobile: link extra debajo de Contact */}
+              <Link
+                href="/newsletter"
+                className={`${styles.navLink} ${styles.mobileOnlyNavLink}`}
+                onClick={closeMenu}
+              >
+                Newsletter
+              </Link>
             </nav>
           </div>
 
