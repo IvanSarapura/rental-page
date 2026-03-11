@@ -152,10 +152,11 @@
   gap: var(--space-3);
 }
 
-@media (min-width: 400px) {
+@media (min-width: 576px) {
   .newsletterForm {
     flex-direction: row;
     align-items: stretch;
+    flex-wrap: wrap;
   }
 }
 
@@ -174,6 +175,7 @@
 
 .newsletterInput {
   flex: 1;
+  min-width: 0;
   min-height: var(--touch-target-min);
   padding: 0.625rem var(--space-4);
   font-family: var(--font-poppins), "Poppins", sans-serif;
@@ -209,6 +211,7 @@
   white-space: nowrap;
   transition: opacity 0.15s ease;
   flex-shrink: 0;
+  max-width: 100%;
 }
 
 .newsletterBtn:hover {
