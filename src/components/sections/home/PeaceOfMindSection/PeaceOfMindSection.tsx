@@ -1,14 +1,17 @@
 import Image from "next/image";
+import { getTranslations } from "next-intl/server";
 import Container from "@/components/ui/Container";
 import { features } from "./features";
 import styles from "./PeaceOfMindSection.module.css";
 
-export default function PeaceOfMindSection() {
+export default async function PeaceOfMindSection() {
+  const t = await getTranslations("PeaceOfMindSection");
+
   return (
     <section className={styles.section}>
       <Container>
         <header className={styles.header}>
-          <h2 className={styles.title}>Giving you peace of mind</h2>
+          <h2 className={styles.title}>{t("title")}</h2>
         </header>
 
         <div className={styles.grid}>
@@ -23,8 +26,12 @@ export default function PeaceOfMindSection() {
                   className={styles.icon}
                 />
               </div>
-              <h3 className={styles.cardTitle}>{feature.title}</h3>
-              <p className={styles.cardBody}>{feature.body}</p>
+              <h3 className={styles.cardTitle}>
+                {t(`${feature.id}.title` as Parameters<typeof t>[0])}
+              </h3>
+              <p className={styles.cardBody}>
+                {t(`${feature.id}.body` as Parameters<typeof t>[0])}
+              </p>
             </article>
           ))}
         </div>

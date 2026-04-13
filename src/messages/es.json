@@ -1,3 +1,140 @@
 {
-  "common": {}
+  "common": {
+    "backToHome": "Volver al inicio",
+    "backToListings": "Volver al listado",
+    "seeMore": "Ver más",
+    "people": "personas"
+  },
+  "Navbar": {
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "home": "Inicio",
+    "offices": "Oficinas",
+    "about": "Nosotros",
+    "contact": "Contacto",
+    "newsletter": "Boletín",
+    "visitNewsletter": "Ver Boletín",
+    "followUs": "Síguenos"
+  },
+  "Footer": {
+    "quickLinks": "Accesos Rápidos",
+    "discover": "Descubrir",
+    "newsletterTitle": "¡Suscríbete a nuestro Boletín!",
+    "emailPlaceholder": "Correo electrónico",
+    "subscribe": "Suscribirse",
+    "followUs": "Síguenos",
+    "followUsOn": "Síguenos en {platform}",
+    "copyright": "© {year} Rental. Todos los derechos reservados."
+  },
+  "HeroSection": {
+    "title": "Alquila Oficinas Diseñadas para tu Éxito",
+    "searchPlaceholder": "Buscar aquí",
+    "searchNearbyLabel": "Encuentra una oficina cerca",
+    "searchNearby": "Buscar Cerca",
+    "search": "Buscar"
+  },
+  "TrustedBySection": {
+    "line1": "Con la confianza de más de 100 empresas",
+    "line2": "alrededor del mundo."
+  },
+  "FeaturedPropertiesSection": {
+    "eyebrow": "Conoce nuestras",
+    "title": "Últimas Propiedades Listadas",
+    "subtitle": "Descubre espacios de trabajo seleccionados en los principales distritos de negocios del país.",
+    "filters": {
+      "nearMe": "Cerca de mí",
+      "top": "Más populares",
+      "all": "Ver todos",
+      "city": "Seleccionar ciudad"
+    }
+  },
+  "OfficeSpotlightSection": {
+    "primeLocations": {
+      "eyebrow": "CONOCE NUESTRAS",
+      "title": "Ubicaciones Privilegiadas",
+      "body": "Nuestras oficinas están estratégicamente ubicadas en el corazón de la ciudad, poniéndote exactamente donde ocurre todo. Impresiona a clientes, atrae talento y conecta con líderes de la industria desde una dirección de prestigio.",
+      "cta": "Ver más"
+    },
+    "futureOffice": {
+      "eyebrow": "DESCUBRE",
+      "title": "El Futuro del Espacio de Trabajo",
+      "body": "Descubre una nueva forma de trabajar que prioriza la flexibilidad, la comodidad y la comunidad. Tu éxito es nuestra prioridad y estamos aquí para brindarte el espacio que necesitas para prosperar.",
+      "cta": "Ver más"
+    }
+  },
+  "PeaceOfMindSection": {
+    "title": "Para que trabajes con tranquilidad",
+    "easyBooking": {
+      "title": "Reserva Fácil",
+      "body": "Alquilar una oficina con nosotros es simple y sin complicaciones. Nuestra plataforma online te permite reservar tu espacio ideal en pocos clics."
+    },
+    "community": {
+      "title": "Comunidad y Networking",
+      "body": "Únete a una vibrante comunidad de profesionales y emprendedores. Conecta, colabora e intercambia ideas en un entorno que fomenta la innovación."
+    },
+    "amenities": {
+      "title": "Amenidades Modernas",
+      "body": "Disfruta de un entorno de trabajo cómodo y productivo con instalaciones de última generación. Internet de alta velocidad, salas de reuniones, mobiliario ergonómico."
+    },
+    "bestPrice": {
+      "title": "Mejor Precio",
+      "body": "¿No sabes cuánto deberías pagar? Déjanos orientarte — contáctanos hoy para una consulta gratuita adaptada a tus necesidades."
+    },
+    "location": {
+      "title": "Ubicación Estratégica",
+      "body": "Ubicados en distritos clave de negocios cerca de transporte, gastronomía y centros educativos. Todo lo que tu equipo necesita está a tu alcance."
+    },
+    "transparency": {
+      "title": "Transparencia",
+      "body": "Nuestros precios son claros y sin cargos ocultos. Lo que ves es lo que obtienes, para que puedas planificar con plena confianza."
+    }
+  },
+  "WorkspaceInquirySection": {
+    "title": "Te ayudamos a encontrar tu espacio ideal",
+    "subtitle": "Completa el formulario y uno de nuestros agentes se pondrá en contacto contigo a la brevedad.",
+    "fullNameLabel": "Nombre completo",
+    "companyLabel": "Empresa",
+    "phoneLabel": "Teléfono",
+    "emailLabel": "Email",
+    "locationLabel": "Ubicación",
+    "numberOfPeopleLabel": "Número de personas",
+    "fullNamePlaceholder": "Juan Pérez",
+    "companyPlaceholder": "Mi Empresa S.A.",
+    "phonePlaceholder": "+54 11 0000-0000",
+    "emailPlaceholder": "juan@miempresa.com",
+    "locationPlaceholder": "Buenos Aires, AR",
+    "numberOfPeoplePlaceholder": "ej: 10",
+    "submit": "Enviar",
+    "required": "Este campo es obligatorio",
+    "successTitle": "¡Gracias por contactarnos!",
+    "successBody": "Apreciamos tu mensaje. Uno de nuestros colegas se comunicará contigo a la brevedad. ¡Que tengas un excelente día!"
+  },
+  "PropertyCard": {
+    "people": "personas"
+  },
+  "PropertyDetail": {
+    "notFoundTitle": "Oficina no encontrada",
+    "notFoundDescription": "La oficina que buscas no existe o puede haber sido eliminada.",
+    "notFoundBackLink": "← Volver al listado",
+    "backLink": "Volver al listado",
+    "notAvailable": "No disponible",
+    "about": "Sobre este espacio",
+    "amenities": "Amenidades",
+    "gallery": "Galería",
+    "bookBtn": "Reservar esta oficina",
+    "unavailableBtn": "No disponible actualmente",
+    "reviews": "reseñas",
+    "people": "personas"
+  },
+  "NotFound": {
+    "title": "Página no encontrada",
+    "description": "La página que buscas no existe o fue movida.",
+    "backLink": "Volver al inicio"
+  },
+  "Error": {
+    "title": "Algo salió mal",
+    "description": "Ocurrió un error inesperado. Puedes intentarlo de nuevo o volver al inicio.",
+    "tryAgain": "Intentar de nuevo",
+    "backHome": "Volver al inicio"
+  }
 }

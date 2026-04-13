@@ -1,7 +1,10 @@
 import Image from "next/image";
+import { getTranslations } from "next-intl/server";
 import styles from "./HeroSection.module.css";
 
-export default function HeroSection() {
+export default async function HeroSection() {
+  const t = await getTranslations("HeroSection");
+
   return (
     <section className={styles.hero}>
       <Image
@@ -15,15 +18,11 @@ export default function HeroSection() {
       <div className={styles.gradientOverlay} aria-hidden />
       <div className={styles.cardOverlay}>
         <div className={styles.titleWrapper}>
-          <h1 className={styles.title}>
-            Rent Offices Tailored to Your Success
-          </h1>
+          <h1 className={styles.title}>{t("title")}</h1>
         </div>
         <div className={styles.searchWrapper}>
           <div className={styles.searchCard}>
-            <span className={styles.searchMobileText}>
-              Find an office near you
-            </span>
+            <span className={styles.searchMobileText}>{t("searchNearbyLabel")}</span>
             <div className={styles.searchDesktopInput}>
               <Image
                 src="/icons/point.svg"
@@ -33,7 +32,7 @@ export default function HeroSection() {
                 className={styles.searchIcon}
                 aria-hidden
               />
-              <span className={styles.searchPlaceholder}>Search here</span>
+              <span className={styles.searchPlaceholder}>{t("searchPlaceholder")}</span>
             </div>
             <Image
               src="/icons/Search.svg"
@@ -45,10 +44,10 @@ export default function HeroSection() {
             />
             <div className={styles.searchActions}>
               <button type="button" className={styles.btnSecondary}>
-                Search Nearby
+                {t("searchNearby")}
               </button>
               <button type="button" className={styles.btnPrimary}>
-                Search
+                {t("search")}
               </button>
             </div>
           </div>

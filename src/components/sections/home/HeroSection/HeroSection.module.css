@@ -3,8 +3,8 @@
 .hero {
   position: relative;
   width: 100%;
-  min-height: 100vh;    /* fallback navegadores sin soporte svh */
-  min-height: 100svh;   /* small viewport height: no cambia al ocultar la URL bar */
+  min-height: 100vh; /* fallback navegadores sin soporte svh */
+  min-height: 100svh; /* small viewport height: no cambia al ocultar la URL bar */
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -51,7 +51,7 @@
   min-width: 0;
   padding: var(--space-4) var(--container-padding-x);
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   align-items: flex-start;
   gap: var(--space-4);
   box-sizing: border-box;

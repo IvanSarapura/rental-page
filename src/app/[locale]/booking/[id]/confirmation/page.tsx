@@ -1,18 +1,22 @@
-type ConfirmationPageProps = {
-  params: {
-    locale: string;
-    id: string;
+import type { Metadata } from "next";
+import ComingSoonPage from "@/components/ui/ComingSoonPage";
+
+type Props = { params: Promise<{ id: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = await params;
+  return {
+    title: `Confirmation — Booking #${id}`,
+    description: "Your office booking has been confirmed.",
   };
-};
-
-export default function ConfirmationPage({ params }: ConfirmationPageProps) {
-  const { id } = params;
-
-  return (
-    <main className="container">
-      <h1>Booking confirmed</h1>
-      <p>Your booking for office ID {id} has been confirmed.</p>
-    </main>
-  );
 }
 
+export default async function ConfirmationPage({ params: _params }: Props) {
+  return (
+    <ComingSoonPage
+      eyebrow="Booking Confirmed"
+      title="You're all set!"
+      description="Your booking confirmation details will be shown here. This page is currently under development."
+    />
+  );
+}

@@ -1,3 +1,140 @@
 {
-  "common": {}
+  "common": {
+    "backToHome": "Back to home",
+    "backToListings": "Back to listings",
+    "seeMore": "See more",
+    "people": "people"
+  },
+  "Navbar": {
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "home": "Home",
+    "offices": "Offices",
+    "about": "About",
+    "contact": "Contact",
+    "newsletter": "Newsletter",
+    "visitNewsletter": "Visit Newsletter",
+    "followUs": "Follow Us"
+  },
+  "Footer": {
+    "quickLinks": "Quick Links",
+    "discover": "Discover",
+    "newsletterTitle": "Subscribe to our Newsletter!",
+    "emailPlaceholder": "Email Address",
+    "subscribe": "Subscribe",
+    "followUs": "Follow Us",
+    "followUsOn": "Follow us on {platform}",
+    "copyright": "© {year} Rental. All rights reserved."
+  },
+  "HeroSection": {
+    "title": "Rent Offices Tailored to Your Success",
+    "searchPlaceholder": "Search here",
+    "searchNearbyLabel": "Find an office near you",
+    "searchNearby": "Search Nearby",
+    "search": "Search"
+  },
+  "TrustedBySection": {
+    "line1": "Trusted by 100+ Companies",
+    "line2": "across the globe!"
+  },
+  "FeaturedPropertiesSection": {
+    "eyebrow": "Checkout our new",
+    "title": "Latest Listed Properties",
+    "subtitle": "Discover handpicked workspaces in top business districts across the country.",
+    "filters": {
+      "nearMe": "Locations near me",
+      "top": "Top locations",
+      "all": "See all",
+      "city": "Select city"
+    }
+  },
+  "OfficeSpotlightSection": {
+    "primeLocations": {
+      "eyebrow": "CHECKOUT OUR",
+      "title": "Prime Locations",
+      "body": "Our offices are strategically located in the heart of the city, putting you right where the action is. Impress clients, attract talent, and network with industry peers — all from your prestigious address.",
+      "cta": "See more"
+    },
+    "futureOffice": {
+      "eyebrow": "EXPERIENCE",
+      "title": "The Future of Office Space",
+      "body": "Discover a new way to work — one that prioritizes flexibility, convenience, and community. Your success is our priority, and we're here to provide the workspace you need to thrive.",
+      "cta": "See more"
+    }
+  },
+  "PeaceOfMindSection": {
+    "title": "Giving you peace of mind",
+    "easyBooking": {
+      "title": "Easy Booking Process",
+      "body": "Renting an office with us is simple and hassle-free. Our user-friendly online platform lets you book your ideal workspace in just a few clicks."
+    },
+    "community": {
+      "title": "Community and Networking",
+      "body": "Join a vibrant community of professionals and entrepreneurs. Network, collaborate, and exchange ideas in an environment that fosters innovation and growth."
+    },
+    "amenities": {
+      "title": "Modern Amenities",
+      "body": "Enjoy a comfortable and productive work environment with state-of-the-art facilities. High-speed internet, meeting rooms, ergonomic furniture."
+    },
+    "bestPrice": {
+      "title": "Best Price",
+      "body": "Not sure what you should be paying? Let us guide you — contact us today for a free workspace consultation tailored to your needs."
+    },
+    "location": {
+      "title": "Strategic Location",
+      "body": "Located in key business districts near transport, dining, and education hubs. Everything your team needs is within reach."
+    },
+    "transparency": {
+      "title": "Transparency",
+      "body": "Our pricing is straightforward with no hidden fees. What you see is what you get, so you can plan and budget with full confidence."
+    }
+  },
+  "WorkspaceInquirySection": {
+    "title": "Let us find your ideal workspace",
+    "subtitle": "Complete the form and one of our team members will be in touch with you shortly.",
+    "fullNameLabel": "Full Name",
+    "companyLabel": "Company",
+    "phoneLabel": "Phone",
+    "emailLabel": "Email",
+    "locationLabel": "Location",
+    "numberOfPeopleLabel": "Number of people",
+    "fullNamePlaceholder": "John Doe",
+    "companyPlaceholder": "Acme Inc.",
+    "phonePlaceholder": "+1 (555) 000-0000",
+    "emailPlaceholder": "john@acme.com",
+    "locationPlaceholder": "New York, NY",
+    "numberOfPeoplePlaceholder": "e.g. 10",
+    "submit": "Submit",
+    "required": "This field is required",
+    "successTitle": "Thank you for getting in touch!",
+    "successBody": "We appreciate you contacting us. One of our colleagues will get back to you shortly. Have a great day!"
+  },
+  "PropertyCard": {
+    "people": "people"
+  },
+  "PropertyDetail": {
+    "notFoundTitle": "Office not found",
+    "notFoundDescription": "The office you're looking for doesn't exist or may have been removed.",
+    "notFoundBackLink": "← Back to listings",
+    "backLink": "Back to listings",
+    "notAvailable": "Not available",
+    "about": "About this space",
+    "amenities": "Amenities",
+    "gallery": "Gallery",
+    "bookBtn": "Book this office",
+    "unavailableBtn": "Currently unavailable",
+    "reviews": "reviews",
+    "people": "people"
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "description": "The page you're looking for doesn't exist or has been moved.",
+    "backLink": "Back to home"
+  },
+  "Error": {
+    "title": "Something went wrong",
+    "description": "An unexpected error occurred. You can try again or return to the home page.",
+    "tryAgain": "Try again",
+    "backHome": "Back to home"
+  }
 }

@@ -8,6 +8,24 @@
   z-index: 10;
 }
 
+/* ── Solid variant: used on all pages except the homepage ── */
+.navbarSolid {
+  position: sticky;
+  left: unset;
+  right: unset;
+  background: #ffffff;
+}
+
+.navbarSolid .logo,
+.navbarSolid .navLink {
+  color: var(--color-foreground);
+}
+
+.navbarSolid .menuButton {
+  color: var(--color-foreground);
+}
+
+/* ── Default (transparent/homepage): white text ── */
 .logo,
 .navLink {
   color: #ffffff;
@@ -32,6 +50,7 @@
   font-weight: 300;
   font-size: 1.5rem;
   letter-spacing: 0.26rem;
+  text-transform: uppercase;
   min-height: var(--touch-target-min);
   min-width: 0;
   flex-shrink: 0;
@@ -113,6 +132,7 @@
   font-weight: 300;
   font-size: 1.25rem;
   letter-spacing: 0.26rem;
+  text-transform: uppercase;
   color: var(--color-foreground);
   text-decoration: none;
 }
@@ -218,33 +238,33 @@
     display: none;
   }
 
-.navFooter {
-  margin-top: auto;
-  padding-left: var(--space-4);
-  padding-right: var(--space-4);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-}
+  .navFooter {
+    margin-top: auto;
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
 
-.followTitle {
-  font-family: var(--font-poppins), "Poppins", sans-serif;
-  font-weight: 600;
-  font-size: 0.9375rem;
-  color: var(--color-foreground);
-}
+  .followTitle {
+    font-family: var(--font-poppins), "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: var(--color-foreground);
+  }
 
-.socialRow {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-}
+  .socialRow {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
 
-.socialIcon {
-  display: block;
-  width: 1.5rem;
-  height: 1.5rem;
-}
+  .socialIcon {
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 }
 
 /* desktop: nav horizontal */

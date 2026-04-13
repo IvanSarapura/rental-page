@@ -2,55 +2,56 @@
 
 import Image from "next/image";
 import { useState, type FormEvent } from "react";
+import { useTranslations } from "next-intl";
 import styles from "./WorkspaceInquirySection.module.css";
 
-type FieldConfig = {
-  id: string;
-  label: string;
-  placeholder: string;
-  type: string;
-};
+type FieldId = "fullName" | "company" | "phone" | "email" | "location" | "numberOfPeople";
+type InputType = "text" | "tel" | "email" | "number";
 
-const fields: readonly FieldConfig[] = [
-  { id: "fullName",       label: "Full Name",       placeholder: "John Doe",          type: "text"   },
-  { id: "company",        label: "Company",          placeholder: "Acme Inc.",         type: "text"   },
-  { id: "phone",          label: "Phone",            placeholder: "+1 (555) 000-0000", type: "tel"    },
-  { id: "email",          label: "Email",            placeholder: "john@acme.com",     type: "email"  },
-  { id: "location",       label: "Location",         placeholder: "New York, NY",      type: "text"   },
-  { id: "numberOfPeople", label: "Number of people", placeholder: "e.g. 10",           type: "number" },
+const FIELD_IDS: readonly { id: FieldId; type: InputType }[] = [
+  { id: "fullName", type: "text" },
+  { id: "company", type: "text" },
+  { id: "phone", type: "tel" },
+  { id: "email", type: "email" },
+  { id: "location", type: "text" },
+  { id: "numberOfPeople", type: "number" },
 ] as const;
 
-type FormValues = Record<string, string>;
+type FormValues = Record<FieldId, string>;
 
 export default function WorkspaceInquirySection() {
+  const t = useTranslations("WorkspaceInquirySection");
+
   const [values, setValues] = useState<FormValues>(
-    () => Object.fromEntries(fields.map((f) => [f.id, ""]))
+    () => Object.fromEntries(FIELD_IDS.map((f) => [f.id, ""])) as FormValues
   );
-  const [errors, setErrors]       = useState<Set<string>>(new Set());
+  const [errors, setErrors] = useState<Set<FieldId>>(new Set());
   const [submitted, setSubmitted] = useState(false);
 
-  function handleChange(id: string, value: string) {
+  function handleChange(id: FieldId, value: string) {
     setValues((prev) => ({ ...prev, [id]: value }));
-    // Limpiar error del campo al escribir
     if (errors.has(id)) {
-      setErrors((prev) => { const s = new Set(prev); s.delete(id); return s; });
+      setErrors((prev) => {
+        const s = new Set(prev);
+        s.delete(id);
+        return s;
+      });
     }
   }
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    // Validar campos no vacíos
     const empty = new Set(
-      fields.map((f) => f.id).filter((id) => !values[id].trim())
-    );
+      FIELD_IDS.map((f) => f.id).filter((id) => !values[id].trim())
+    ) as Set<FieldId>;
 
     if (empty.size > 0) {
       setErrors(empty);
       return;
     }
 
-    // TODO: conectar con endpoint de contacto
+    // TODO: replace with real API call via bookingService / contact endpoint
     setSubmitted(true);
   }
 
@@ -68,7 +69,6 @@ export default function WorkspaceInquirySection() {
 
       <div className={styles.content}>
         <div className={styles.card}>
-
           {submitted ? (
             /* ── Estado de éxito ───────────────────────── */
             <div className={styles.successState}>
@@ -84,50 +84,41 @@ export default function WorkspaceInquirySection() {
                   />
                 </svg>
               </div>
-              <h2 className={styles.successTitle}>
-                Thank you for getting in touch!
-              </h2>
-              <p className={styles.successBody}>
-                We appreciate you contacting us. One of our colleagues will get
-                back to you shortly.
-                <br />
-                Have a great day!
-              </p>
+              <h2 className={styles.successTitle}>{t("successTitle")}</h2>
+              <p className={styles.successBody}>{t("successBody")}</p>
             </div>
           ) : (
             /* ── Formulario ────────────────────────────── */
             <>
               <header className={styles.cardHeader}>
-                <h2 className={styles.cardTitle}>Let us find your ideal workspace</h2>
-                <p className={styles.cardSubtitle}>
-                  Complete the form and a WeWork team member will be in touch with you shortly.
-                </p>
+                <h2 className={styles.cardTitle}>{t("title")}</h2>
+                <p className={styles.cardSubtitle}>{t("subtitle")}</p>
               </header>
 
               <form onSubmit={handleSubmit} noValidate>
                 <div className={styles.fieldsGrid}>
-                  {fields.map((field) => (
-                    <div key={field.id} className={styles.field}>
-                      <label htmlFor={field.id} className={styles.label}>
-                        {field.label}
+                  {FIELD_IDS.map(({ id, type }) => (
+                    <div key={id} className={styles.field}>
+                      <label htmlFor={id} className={styles.label}>
+                        {t(`${id}Label` as Parameters<typeof t>[0])}
                       </label>
                       <div className={styles.inputWrapper}>
                         <input
-                          id={field.id}
-                          name={field.id}
-                          type={field.type}
-                          placeholder={field.placeholder}
-                          value={values[field.id]}
-                          onChange={(e) => handleChange(field.id, e.target.value)}
-                          className={`${styles.input} ${errors.has(field.id) ? styles.inputError : ""}`}
-                          autoComplete={field.id === "email" ? "email" : undefined}
-                          aria-invalid={errors.has(field.id)}
+                          id={id}
+                          name={id}
+                          type={type}
+                          placeholder={t(`${id}Placeholder` as Parameters<typeof t>[0])}
+                          value={values[id]}
+                          onChange={(e) => handleChange(id, e.target.value)}
+                          className={`${styles.input} ${errors.has(id) ? styles.inputError : ""}`}
+                          autoComplete={id === "email" ? "email" : undefined}
+                          aria-invalid={errors.has(id)}
                         />
-                        {errors.has(field.id) && (
+                        {errors.has(id) && (
                           <span
                             className={styles.errorAsterisk}
                             aria-hidden="true"
-                            data-tooltip="This field is required"
+                            data-tooltip={t("required")}
                           >
                             *
                           </span>
@@ -138,12 +129,11 @@ export default function WorkspaceInquirySection() {
                 </div>
 
                 <button type="submit" className={styles.submitBtn}>
-                  Submit
+                  {t("submit")}
                 </button>
               </form>
             </>
           )}
-
         </div>
       </div>
     </section>

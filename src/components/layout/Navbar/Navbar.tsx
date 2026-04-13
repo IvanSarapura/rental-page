@@ -2,13 +2,19 @@
 
 import Image from "next/image";
 import { useState, useCallback, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { ROUTES, SOCIAL_LINKS, BRAND_NAME } from "@/lib/constants";
 import styles from "./Navbar.module.css";
-import { navItems } from "./navItems";
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const t = useTranslations("Navbar");
+  const pathname = usePathname();
+  // Homepage: "/" or "/<locale>" — at most 1 path segment after filtering empty strings
+  const isHome = pathname.split("/").filter(Boolean).length <= 1;
 
+  const [menuOpen, setMenuOpen] = useState(false);
   const closeMenu = useCallback(() => setMenuOpen(false), []);
 
   useEffect(() => {
@@ -18,11 +24,18 @@ export default function Navbar() {
     };
   }, [menuOpen]);
 
+  const navItems = [
+    { href: ROUTES.home, label: t("home") },
+    { href: "/#offices", label: t("offices") },
+    { href: "/#about", label: t("about") },
+    { href: "/#contact", label: t("contact") },
+  ] as const;
+
   return (
-    <header className={styles.navbar}>
+    <header className={`${styles.navbar} ${!isHome ? styles.navbarSolid : ""}`}>
       <div className={styles.navbarInner}>
         <Link href="/" className={styles.logo} onClick={closeMenu}>
-          RENTAL
+          {BRAND_NAME}
         </Link>
 
         <button
@@ -31,7 +44,7 @@ export default function Navbar() {
           onClick={() => setMenuOpen((open) => !open)}
           aria-expanded={menuOpen}
           aria-controls="nav-menu"
-          aria-label="Abrir menú"
+          aria-label={t("openMenu")}
         >
           <span className={styles.menuIcon} aria-hidden>
             ☰
@@ -44,18 +57,14 @@ export default function Navbar() {
           data-open={menuOpen}
         >
           <div className={styles.navHeader}>
-            <Link
-              href="/"
-              className={styles.navHeaderLogo}
-              onClick={closeMenu}
-            >
-              RENTAL
+            <Link href="/" className={styles.navHeaderLogo} onClick={closeMenu}>
+              {BRAND_NAME}
             </Link>
             <button
               type="button"
               className={styles.navHeaderClose}
               onClick={closeMenu}
-              aria-label="Cerrar menú"
+              aria-label={t("closeMenu")}
             >
               <Image
                 src="/icons/x.svg"
@@ -71,74 +80,40 @@ export default function Navbar() {
           <div className={styles.navCenter}>
             <nav className={styles.nav}>
               {navItems.map(({ href, label }) => (
-                <Link
-                  key={href}
-                  href={href}
-                  className={styles.navLink}
-                  onClick={closeMenu}
-                >
+                <Link key={href} href={href} className={styles.navLink} onClick={closeMenu}>
                   {label}
                 </Link>
               ))}
 
               {/* Solo mobile: link extra debajo de Contact */}
               <Link
-                href="/newsletter"
+                href={ROUTES.newsletter}
                 className={`${styles.navLink} ${styles.mobileOnlyNavLink}`}
                 onClick={closeMenu}
               >
-                Newsletter
+                {t("newsletter")}
               </Link>
             </nav>
           </div>
 
           <div className={styles.navFooter}>
-            <p className={styles.followTitle}>Follow Us</p>
+            <p className={styles.followTitle}>{t("followUs")}</p>
             <div className={styles.socialRow}>
-              <Image
-                src="/icons/facebook.svg"
-                alt="Follow on Facebook"
-                width={24}
-                height={24}
-                className={styles.socialIcon}
-              />
-              <Image
-                src="/icons/youtube.svg"
-                alt="Follow on YouTube"
-                width={24}
-                height={24}
-                className={styles.socialIcon}
-              />
-              <Image
-                src="/icons/dribbble.svg"
-                alt="Follow on Dribbble"
-                width={24}
-                height={24}
-                className={styles.socialIcon}
-              />
-              <Image
-                src="/icons/figma.svg"
-                alt="Follow on Figma"
-                width={24}
-                height={24}
-                className={styles.socialIcon}
-              />
-              <Image
-                src="/icons/whatsapp.svg"
-                alt="Contact on WhatsApp"
-                width={24}
-                height={24}
-                className={styles.socialIcon}
-              />
+              {SOCIAL_LINKS.map(({ icon, label }) => (
+                <Image
+                  key={label}
+                  src={icon}
+                  alt={label}
+                  width={24}
+                  height={24}
+                  className={styles.socialIcon}
+                />
+              ))}
             </div>
           </div>
 
-          <Link
-            href="/newsletter"
-            className={styles.cta}
-            onClick={closeMenu}
-          >
-            Visit Newsletter
+          <Link href={ROUTES.newsletter} className={styles.cta} onClick={closeMenu}>
+            {t("visitNewsletter")}
           </Link>
         </div>
       </div>
