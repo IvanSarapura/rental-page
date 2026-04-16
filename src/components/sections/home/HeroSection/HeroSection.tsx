@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import styles from "./HeroSection.module.css";
 
 export default async function HeroSection() {
@@ -19,10 +20,24 @@ export default async function HeroSection() {
       <div className={styles.cardOverlay}>
         <div className={styles.titleWrapper}>
           <h1 className={styles.title}>{t("title")}</h1>
+          <p className={styles.subtitle}>{t("subtitle")}</p>
         </div>
         <div className={styles.searchWrapper}>
           <div className={styles.searchCard}>
-            <span className={styles.searchMobileText}>{t("searchNearbyLabel")}</span>
+            {/* Mobile: toda la card es un link a /search */}
+            <Link href="/search" className={styles.searchMobileLink}>
+              <span className={styles.searchMobileText}>{t("searchNearbyLabel")}</span>
+              <Image
+                src="/icons/Search.svg"
+                alt=""
+                width={24}
+                height={24}
+                className={styles.searchMobileIcon}
+                aria-hidden
+              />
+            </Link>
+
+            {/* Desktop: input mock + botones de acción */}
             <div className={styles.searchDesktopInput}>
               <Image
                 src="/icons/point.svg"
@@ -34,21 +49,13 @@ export default async function HeroSection() {
               />
               <span className={styles.searchPlaceholder}>{t("searchPlaceholder")}</span>
             </div>
-            <Image
-              src="/icons/Search.svg"
-              alt=""
-              width={24}
-              height={24}
-              className={styles.searchMobileIcon}
-              aria-hidden
-            />
             <div className={styles.searchActions}>
-              <button type="button" className={styles.btnSecondary}>
+              <Link href="/search?mode=nearby" className={styles.btnSecondary}>
                 {t("searchNearby")}
-              </button>
-              <button type="button" className={styles.btnPrimary}>
+              </Link>
+              <Link href="/search" className={styles.btnPrimary}>
                 {t("search")}
-              </button>
+              </Link>
             </div>
           </div>
         </div>

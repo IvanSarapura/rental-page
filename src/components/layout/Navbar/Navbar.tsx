@@ -65,10 +65,20 @@ export default function Navbar() {
   }, [menuOpen]);
 
   // ── Language switcher ──
-  const otherLocale = locale === "es" ? "en" : "es";
-  const handleLocaleSwitch = useCallback(() => {
-    router.replace(pathname, { locale: otherLocale });
-  }, [router, pathname, otherLocale]);
+  // Reads window.location.pathname directly at click time to avoid stale React
+  // state during locale transitions (useLocale and usePathname can update in
+  // different render cycles, causing /es/es/ URL duplication if we rely on them).
+  // No-ops if the selected locale is already active.
+  const handleLocaleSelect = useCallback(
+    (selected: "es" | "en") => {
+      const currentPath = window.location.pathname;
+      const match = currentPath.match(/^\/(es|en)(\/.*)?$/);
+      if (!match || match[1] === selected) return;
+      const strippedPath = match[2] || "/";
+      router.replace(strippedPath, { locale: selected });
+    },
+    [router]
+  );
 
   const navItems = [
     { href: ROUTES.home, label: t("home") },
@@ -184,19 +194,30 @@ export default function Navbar() {
 
           {/* Desktop: language switcher + CTA */}
           <div className={styles.desktopActions}>
-            <button
-              type="button"
-              className={styles.langBtn}
-              onClick={handleLocaleSwitch}
+            {/* Segmented control: sliding pill indicator */}
+            <div
+              className={`${styles.langSwitch} ${locale === "en" ? styles.langSwitchRight : ""}`}
+              role="group"
               aria-label={t("switchLanguage")}
-              title={t("switchLanguage")}
             >
-              <span className={styles.langCurrent}>{t("languageLabel")}</span>
-              <span className={styles.langSeparator} aria-hidden>
-                /
-              </span>
-              <span className={styles.langOther}>{otherLocale.toUpperCase()}</span>
-            </button>
+              <span className={styles.langIndicator} aria-hidden />
+              <button
+                type="button"
+                className={`${styles.langOption} ${locale === "es" ? styles.langOptionActive : ""}`}
+                onClick={() => handleLocaleSelect("es")}
+                aria-pressed={locale === "es"}
+              >
+                ES
+              </button>
+              <button
+                type="button"
+                className={`${styles.langOption} ${locale === "en" ? styles.langOptionActive : ""}`}
+                onClick={() => handleLocaleSelect("en")}
+                aria-pressed={locale === "en"}
+              >
+                EN
+              </button>
+            </div>
 
             <Link href={ROUTES.newsletter} className={styles.cta} onClick={closeMenu}>
               {t("visitNewsletter")}

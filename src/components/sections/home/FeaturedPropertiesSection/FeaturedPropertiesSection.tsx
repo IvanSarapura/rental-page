@@ -34,6 +34,8 @@ export default async function FeaturedPropertiesSection() {
           filters={propertyFilters}
           filterLabels={filterLabels}
           groupLabel={t("title")}
+          emptyStateText={t("emptyState")}
+          seeAllLabel={t("filters.all")}
         />
       </Container>
     </section>

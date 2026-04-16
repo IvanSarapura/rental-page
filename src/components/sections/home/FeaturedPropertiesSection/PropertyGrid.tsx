@@ -30,6 +30,9 @@ type PropertyGridProps = {
   /** Pre-translated labels keyed by filter id */
   filterLabels: Record<FilterId, string>;
   groupLabel: string;
+  /** Pre-translated empty state strings */
+  emptyStateText: string;
+  seeAllLabel: string;
 };
 
 const variantClass: Record<string, string> = {
@@ -45,6 +48,8 @@ export default function PropertyGrid({
   filters,
   filterLabels,
   groupLabel,
+  emptyStateText,
+  seeAllLabel,
 }: PropertyGridProps) {
   const [activeFilter, setActiveFilter] = useState<FilterId>("nearMe");
 
@@ -104,10 +109,26 @@ export default function PropertyGrid({
       </div>
 
       {/* ── Property grid ── */}
-      <div className={styles.grid}>
-        {visibleProperties.map((property) => (
-          <PropertyCard key={property.id} property={property} />
-        ))}
+      <div className={styles.grid} aria-live="polite" aria-atomic="false">
+        {visibleProperties.length > 0 ? (
+          visibleProperties.map((property, index) => (
+            /* key incluye activeFilter para forzar re-mount y disparar la animación */
+            <div
+              key={`${activeFilter}-${property.id}`}
+              className={styles.cardAnimate}
+              style={{ animationDelay: `${index * 55}ms` }}
+            >
+              <PropertyCard property={property} />
+            </div>
+          ))
+        ) : (
+          <div className={styles.emptyState}>
+            <p className={styles.emptyStateText}>{emptyStateText}</p>
+            <Link href="/search" className={styles.emptyStateLink}>
+              {seeAllLabel} →
+            </Link>
+          </div>
+        )}
       </div>
     </>
   );

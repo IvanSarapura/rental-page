@@ -1,17 +1,59 @@
 .section {
   background-color: var(--color-background);
-  padding: var(--space-10) 0;
+  padding: var(--section-padding-sm) 0;
 }
 
 @media (min-width: 768px) {
   .section {
-    padding: 4rem 0;
+    padding: var(--section-padding-md) 0;
   }
 }
 
 @media (min-width: 1200px) {
   .section {
-    padding: 5rem 0;
+    padding: var(--section-padding-xl) 0;
+  }
+}
+
+/* ── Section header ─────────────────────────────────────────── */
+.header {
+  margin-bottom: var(--space-8);
+}
+
+@media (min-width: 768px) {
+  .header {
+    margin-bottom: var(--space-10);
+  }
+}
+
+.eyebrowSection {
+  font-family: var(--font-poppins), "Poppins", sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0 0 var(--space-2);
+}
+
+.titleSection {
+  margin: 0;
+  font-family: var(--font-plus-jakarta-sans), "Plus Jakarta Sans", sans-serif;
+  font-size: 1.75rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--color-foreground);
+}
+
+@media (min-width: 768px) {
+  .titleSection {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .titleSection {
+    font-size: 2.25rem;
   }
 }
 
@@ -29,21 +71,19 @@
 }
 
 /* ── Card exterior ─────────────────────────────────────────── */
-/* Actúa como contenedor con padding, sin overflow:hidden
-   para que el border-radius del imageWrapper sea visible */
 .card {
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
   padding: var(--space-4);
-  border-radius: 1.25rem;
+  border-radius: var(--radius-xl);
   background-color: var(--color-surface);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-  transition: box-shadow 0.2s ease;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow var(--transition-base);
 }
 
 .card:hover {
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.10);
+  box-shadow: var(--shadow-card-hover);
 }
 
 @media (min-width: 768px) {
@@ -62,20 +102,17 @@
 }
 
 /* ── Mitad de imagen ───────────────────────────────────────── */
-/* La imagen vive en su propio contenedor redondeado */
 .imageSide {
   position: relative;
   flex: 1 1 50%;
   min-height: 14rem;
-  border-radius: 1rem;
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  /* En mobile la imagen siempre va al final (debajo del texto) */
   order: 2;
 }
 
 @media (min-width: 768px) {
   .imageSide {
-    /* En desktop se restaura el orden natural del DOM */
     order: unset;
     align-self: stretch;
     min-height: unset;
@@ -93,8 +130,7 @@
   flex-direction: column;
   justify-content: center;
   gap: var(--space-4);
-  padding: var(--space-2) var(--space-2);
-  /* En mobile el texto siempre va primero (arriba de la imagen) */
+  padding: var(--space-2);
   order: 1;
 }
 
@@ -166,17 +202,20 @@
   color: var(--color-foreground);
   text-decoration: none;
   align-self: flex-start;
-  transition: opacity 0.15s ease;
+  transition:
+    color var(--transition-fast),
+    opacity var(--transition-fast);
 }
 
 .cta::after {
   content: "→";
   font-size: 1rem;
-  transition: transform 0.15s ease;
+  transition: transform var(--transition-fast);
 }
 
 .cta:hover {
-  opacity: 0.65;
+  color: var(--color-accent);
+  opacity: 1;
 }
 
 .cta:hover::after {

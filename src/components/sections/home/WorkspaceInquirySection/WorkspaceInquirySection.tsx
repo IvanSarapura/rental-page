@@ -8,14 +8,15 @@ import styles from "./WorkspaceInquirySection.module.css";
 type FieldId = "fullName" | "company" | "phone" | "email" | "location" | "numberOfPeople";
 type InputType = "text" | "tel" | "email" | "number";
 
-const FIELD_IDS: readonly { id: FieldId; type: InputType }[] = [
-  { id: "fullName", type: "text" },
-  { id: "company", type: "text" },
-  { id: "phone", type: "tel" },
-  { id: "email", type: "email" },
-  { id: "location", type: "text" },
-  { id: "numberOfPeople", type: "number" },
-] as const;
+const FIELD_IDS: readonly { id: FieldId; type: InputType; autoComplete?: string; min?: string }[] =
+  [
+    { id: "fullName", type: "text", autoComplete: "name" },
+    { id: "company", type: "text", autoComplete: "organization" },
+    { id: "phone", type: "tel", autoComplete: "tel" },
+    { id: "email", type: "email", autoComplete: "email" },
+    { id: "location", type: "text", autoComplete: "address-level2" },
+    { id: "numberOfPeople", type: "number", min: "1" },
+  ] as const;
 
 type FormValues = Record<FieldId, string>;
 
@@ -97,7 +98,7 @@ export default function WorkspaceInquirySection() {
 
               <form onSubmit={handleSubmit} noValidate>
                 <div className={styles.fieldsGrid}>
-                  {FIELD_IDS.map(({ id, type }) => (
+                  {FIELD_IDS.map(({ id, type, autoComplete, min }) => (
                     <div key={id} className={styles.field}>
                       <label htmlFor={id} className={styles.label}>
                         {t(`${id}Label` as Parameters<typeof t>[0])}
@@ -111,8 +112,9 @@ export default function WorkspaceInquirySection() {
                           value={values[id]}
                           onChange={(e) => handleChange(id, e.target.value)}
                           className={`${styles.input} ${errors.has(id) ? styles.inputError : ""}`}
-                          autoComplete={id === "email" ? "email" : undefined}
+                          autoComplete={autoComplete}
                           aria-invalid={errors.has(id)}
+                          {...(min !== undefined ? { min } : {})}
                         />
                         {errors.has(id) && (
                           <span

@@ -10,9 +10,13 @@
   --color-surface: #ffffff;
   --color-surface-alt: #f5f5f5;
 
-  /* Accent — azul institucional premium */
-  --color-accent: #2563eb;
-  --color-accent-light: rgba(37, 99, 235, 0.08);
+  /* Accent — oro ámbar cálido (coincide con color de íconos SVG #D89B1C) */
+  --color-accent: #d89b1c; /* brand gold — decorativo, bg con texto oscuro */
+  --color-accent-light: rgba(216, 155, 28, 0.1); /* tint cálido para fondos de íconos */
+  --color-accent-hover: #a87800; /* honey gold — hover de fondos y bordes, sin componente azul (oro puro) */
+
+  /* Semánticos de superficie */
+  --color-footer-bg: var(--color-primary); /* fondo del footer oscuro */
 
   /* Star rating */
   --color-star: #f59e0b;
@@ -47,8 +51,8 @@
   --z-base: 0;
   --z-raised: 10;
   --z-navbar: 100;
-  --z-drawer: 200;
   --z-sticky: 150;
+  --z-drawer: 200;
   --z-modal: 300;
   --z-toast: 400;
 
@@ -69,6 +73,15 @@
   --space-10: 2.5rem;
   --space-12: 3rem;
   --space-16: 4rem;
+  --space-20: 5rem;
+
+  /* ── Section padding — escala consistente ────────────────────────────────── */
+  --section-padding-sm: var(--space-10); /* 2.5rem — mobile */
+  --section-padding-md: var(--space-16); /* 4rem   — tablet */
+  --section-padding-xl: var(--space-20); /* 5rem   — desktop */
+
+  /* ── Typography ──────────────────────────────────────────────────────────── */
+  --font-feature-tabular: "tnum"; /* numerales tabulares para precios */
 
   /* ── Container — Figma 1366px content ───────────────────────────────────── */
   --container-max-width: 1366px;

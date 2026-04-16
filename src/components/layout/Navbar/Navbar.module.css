@@ -220,7 +220,7 @@
   left: 0;
   width: 100%;
   height: 2px;
-  background-color: currentColor;
+  background-color: var(--color-accent);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--transition-base);
@@ -284,43 +284,70 @@
   height: 1.5rem;
 }
 
-/* ── Language switcher ───────────────────────────────────────────────────── */
-.langBtn {
+/* ── Language switcher — segmented control ───────────────────────────────── */
+
+/* Pill container — clips spring overshoot */
+.langSwitch {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 0.25rem;
-  background: transparent;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius-full);
+  padding: 2px;
+}
+
+/* Sliding frosted-white indicator — ES side by default.
+   Spring easing (cubic-bezier 0.22 1 0.36 1) gives the
+   characteristic bounce-and-settle of a hardware switch. */
+.langIndicator {
+  position: absolute;
+  inset-block: 2px;
+  left: 2px;
+  width: calc(50% - 2px);
+  background-color: rgba(255, 255, 255, 0.28);
+  border-radius: var(--radius-full);
+  transition: transform var(--transition-spring);
+  pointer-events: none;
+}
+
+/* Slide to EN side */
+.langSwitchRight .langIndicator {
+  transform: translateX(100%);
+}
+
+/* Individual locale buttons */
+.langOption {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.25rem;
+  height: 1.75rem;
+  padding: 0 0.625rem;
   border: none;
+  background: transparent;
   cursor: pointer;
-  padding: var(--space-2) var(--space-3);
-  border-radius: var(--radius-md);
   font-family: var(--font-poppins), "Poppins", sans-serif;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  transition: opacity var(--transition-fast);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  border-radius: var(--radius-full);
+  color: rgba(255, 255, 255, 0.45);
+  transition: color var(--transition-base);
 }
 
-.langBtn:hover {
-  opacity: 0.7;
-}
-
-.langBtn:focus-visible {
-  outline: 2px solid currentColor;
+.langOption:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.7);
   outline-offset: 2px;
 }
 
-.langCurrent {
-  font-weight: 700;
-}
-
-.langSeparator {
-  color: currentColor;
-  opacity: 0.4;
-}
-
-.langOther {
-  opacity: 0.5;
+/* Active locale: full white, non-interactive */
+.langOptionActive {
+  color: #ffffff;
+  cursor: default;
 }
 
 /* ── CTA button ──────────────────────────────────────────────────────────── */
@@ -448,13 +475,12 @@
     flex-shrink: 0;
   }
 
-  /* White text on transparent navbar */
-  .langBtn {
-    color: #ffffff;
+  /* Solid navbar: dark pill container keeps white text readable on white bg */
+  .navbarSolid .langSwitch {
+    background-color: rgba(23, 23, 23, 0.82);
   }
 
-  /* Dark text on solid navbar */
-  .navbarSolid .langBtn {
-    color: var(--color-foreground);
+  .navbarSolid .langIndicator {
+    background-color: rgba(255, 255, 255, 0.18);
   }
 }

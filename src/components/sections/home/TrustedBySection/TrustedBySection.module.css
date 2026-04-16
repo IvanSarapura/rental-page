@@ -1,5 +1,5 @@
 .section {
-  background-color: #ffffff;
+  background-color: var(--color-surface);
   padding-top: var(--space-8);
   padding-bottom: 0;
 }
@@ -37,4 +37,3 @@
     font-size: 1.125rem;
   }
 }
-

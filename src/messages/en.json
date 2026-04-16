@@ -3,7 +3,8 @@
     "backToHome": "Back to home",
     "backToListings": "Back to listings",
     "seeMore": "See more",
-    "people": "people"
+    "people": "people",
+    "skipToContent": "Skip to main content"
   },
   "Navbar": {
     "openMenu": "Open menu",
@@ -33,7 +34,8 @@
     "searchPlaceholder": "Search here",
     "searchNearbyLabel": "Find an office near you",
     "searchNearby": "Search Nearby",
-    "search": "Search"
+    "search": "Search",
+    "subtitle": "Premium workspaces in prime locations — book by the month."
   },
   "TrustedBySection": {
     "line1": "Trusted by 100+ Companies",
@@ -48,9 +50,12 @@
       "top": "Top locations",
       "all": "See all",
       "city": "Select city"
-    }
+    },
+    "emptyState": "No offices found for this filter."
   },
   "OfficeSpotlightSection": {
+    "eyebrow": "Our Spaces",
+    "title": "Handpicked Office Spots",
     "primeLocations": {
       "eyebrow": "CHECKOUT OUR",
       "title": "Prime Locations",

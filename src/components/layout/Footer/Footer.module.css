@@ -1,19 +1,19 @@
 /* ── Footer oscuro ─────────────────────────────────────────── */
 .footer {
-  background-color: #171717;
-  color: #ffffff;
-  padding-top: var(--space-10);
+  background-color: var(--color-footer-bg);
+  color: var(--color-text-inverse);
+  padding-top: var(--section-padding-sm);
 }
 
 @media (min-width: 768px) {
   .footer {
-    padding-top: 4rem;
+    padding-top: var(--section-padding-md);
   }
 }
 
 @media (min-width: 1200px) {
   .footer {
-    padding-top: 5rem;
+    padding-top: var(--section-padding-xl);
   }
 }
 
@@ -36,7 +36,7 @@
   .grid {
     grid-template-columns: repeat(4, 1fr);
     gap: var(--space-8);
-    padding-bottom: 4rem;
+    padding-bottom: var(--section-padding-md);
   }
 }
 
@@ -53,7 +53,7 @@
   font-size: 1.5rem;
   letter-spacing: 0.26rem;
   text-transform: uppercase;
-  color: #ffffff;
+  color: var(--color-text-inverse);
   text-decoration: none;
   display: inline-block;
 }
@@ -81,11 +81,11 @@
 .contactItem a {
   color: rgba(255, 255, 255, 0.65);
   text-decoration: none;
-  transition: color 0.15s ease;
+  transition: color var(--transition-fast);
 }
 
 .contactItem a:hover {
-  color: #ffffff;
+  color: var(--color-text-inverse);
 }
 
 /* ── Columnas de links (Quick Links / Discover) ────────────── */
@@ -100,7 +100,7 @@
   font-family: var(--font-plus-jakarta-sans), "Plus Jakarta Sans", sans-serif;
   font-size: 1rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--color-text-inverse);
   letter-spacing: 0.01em;
 }
 
@@ -135,11 +135,11 @@
   font-size: 0.875rem;
   color: rgba(255, 255, 255, 0.65);
   text-decoration: none;
-  transition: color 0.15s ease;
+  transition: color var(--transition-fast);
 }
 
 .linkItem a:hover {
-  color: #ffffff;
+  color: var(--color-text-inverse);
 }
 
 /* ── Columna Newsletter + Social ───────────────────────────── */
@@ -161,7 +161,7 @@
   font-family: var(--font-plus-jakarta-sans), "Plus Jakarta Sans", sans-serif;
   font-size: 1rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--color-text-inverse);
 }
 
 .newsletterForm {
@@ -185,12 +185,12 @@
   padding: 0.625rem var(--space-4);
   font-family: var(--font-poppins), "Poppins", sans-serif;
   font-size: 0.875rem;
-  color: #ffffff;
+  color: var(--color-text-inverse);
   background-color: rgba(255, 255, 255, 0.08);
   border: 1.5px solid rgba(255, 255, 255, 0.2);
-  border-radius: 0.75rem;
+  border-radius: var(--radius-md);
   outline: none;
-  transition: border-color 0.15s ease;
+  transition: border-color var(--transition-fast);
   box-sizing: border-box;
 }
 
@@ -208,13 +208,13 @@
   font-family: var(--font-poppins), "Poppins", sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
-  color: #171717;
-  background-color: #ffffff;
+  color: var(--color-foreground);
+  background-color: var(--color-text-inverse);
   border: none;
-  border-radius: 0.75rem;
+  border-radius: var(--radius-md);
   cursor: pointer;
   white-space: nowrap;
-  transition: opacity 0.15s ease;
+  transition: opacity var(--transition-fast);
   flex-shrink: 0;
   max-width: 100%;
 }
@@ -235,7 +235,7 @@
   font-family: var(--font-plus-jakarta-sans), "Plus Jakarta Sans", sans-serif;
   font-size: 1rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--color-text-inverse);
 }
 
 .socialRow {
@@ -251,7 +251,7 @@
   width: 2rem;
   height: 2rem;
   opacity: 0.65;
-  transition: opacity 0.15s ease;
+  transition: opacity var(--transition-fast);
 }
 
 .socialLink:hover {

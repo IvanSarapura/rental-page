@@ -3,7 +3,8 @@
     "backToHome": "Volver al inicio",
     "backToListings": "Volver al listado",
     "seeMore": "Ver más",
-    "people": "personas"
+    "people": "personas",
+    "skipToContent": "Ir al contenido principal"
   },
   "Navbar": {
     "openMenu": "Abrir menú",
@@ -33,7 +34,8 @@
     "searchPlaceholder": "Buscar aquí",
     "searchNearbyLabel": "Encuentra una oficina cerca",
     "searchNearby": "Buscar Cerca",
-    "search": "Buscar"
+    "search": "Buscar",
+    "subtitle": "Espacios de trabajo premium en ubicaciones privilegiadas — renta por mes."
   },
   "TrustedBySection": {
     "line1": "Con la confianza de más de 100 empresas",
@@ -48,9 +50,12 @@
       "top": "Más populares",
       "all": "Ver todos",
       "city": "Seleccionar ciudad"
-    }
+    },
+    "emptyState": "No se encontraron oficinas para este filtro."
   },
   "OfficeSpotlightSection": {
+    "eyebrow": "Nuestros Espacios",
+    "title": "Oficinas Seleccionadas",
     "primeLocations": {
       "eyebrow": "CONOCE NUESTRAS",
       "title": "Ubicaciones Privilegiadas",

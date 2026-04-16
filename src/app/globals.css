@@ -1,4 +1,4 @@
-@import '@/styles/tokens.css';
+@import "@/styles/tokens.css";
 
 :root {
   --background: var(--color-background);
@@ -26,8 +26,15 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
   font-size: 1rem;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -45,7 +52,97 @@ a {
   text-decoration: none;
 }
 
-/* container with margins */
+/* ── Focus visible global ─────────────────────────────────────────────────── */
+/* Política unificada: todos los elementos interactivos tienen un anillo de
+   foco visible con --color-accent. Los componentes que definían su propio
+   focus-visible con currentColor se benefician de esta regla global. */
+*:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Skip to main content ─────────────────────────────────────────────────── */
+/* Visible solo al recibir foco por teclado. Permite a usuarios de teclado y
+   lectores de pantalla saltar directamente al contenido principal. */
+.skip-to-content {
+  position: fixed;
+  top: var(--space-3);
+  left: var(--space-3);
+  z-index: var(--z-toast);
+  padding: var(--space-3) var(--space-5);
+  background: var(--color-accent);
+  color: var(--color-foreground);
+  font-family: var(--font-poppins), "Poppins", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  /* Oculto por defecto: fuera de pantalla */
+  transform: translateY(-200%);
+  transition: transform var(--transition-fast);
+}
+
+.skip-to-content:focus {
+  transform: translateY(0);
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+/* ── Scroll-reveal animations ─────────────────────────────────────────────── */
+/* Clases reutilizables para el RevealSection client wrapper (Fase 8).
+   [data-reveal] arranca invisible; [data-reveal="visible"] anima la entrada. */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(1.5rem);
+}
+
+[data-reveal="visible"] {
+  animation: revealUp var(--transition-spring) both;
+}
+
+@keyframes revealUp {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Delay helpers para stagger de cards */
+[data-reveal-delay="1"] {
+  animation-delay: 60ms;
+}
+[data-reveal-delay="2"] {
+  animation-delay: 120ms;
+}
+[data-reveal-delay="3"] {
+  animation-delay: 180ms;
+}
+[data-reveal-delay="4"] {
+  animation-delay: 240ms;
+}
+[data-reveal-delay="5"] {
+  animation-delay: 300ms;
+}
+[data-reveal-delay="6"] {
+  animation-delay: 360ms;
+}
+
+/* Respeta prefers-reduced-motion para todas las animaciones de reveal */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal],
+  [data-reveal="visible"] {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
+/* ── Container ────────────────────────────────────────────────────────────── */
 .container {
   width: 100%;
   max-width: var(--container-max-width);
