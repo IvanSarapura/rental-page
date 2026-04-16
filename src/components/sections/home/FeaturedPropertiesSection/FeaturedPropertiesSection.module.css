@@ -15,21 +15,14 @@
   }
 }
 
-/* ── Section header ───────────────────────────────────────── */
+/* ── Section header (eyebrow + title + subtitle only) ─────── */
 .header {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-6);
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-6);
 }
 
 @media (min-width: 768px) {
   .header {
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: var(--space-8);
-    margin-bottom: var(--space-10);
+    margin-bottom: var(--space-8);
   }
 }
 
@@ -80,18 +73,19 @@
   max-width: 38ch;
 }
 
-/* ── Right: filter buttons ─────────────────────────────────── */
+/* ── Filter buttons row ────────────────────────────────────── */
 .filters {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
-  flex-shrink: 0;
+  margin-bottom: var(--space-8);
 }
 
 @media (min-width: 768px) {
   .filters {
     flex-wrap: nowrap;
     align-items: center;
+    margin-bottom: var(--space-10);
   }
 }
 
@@ -107,7 +101,9 @@
   padding: 0.625rem 1.125rem;
   cursor: pointer;
   white-space: nowrap;
-  transition: opacity 0.15s ease, background-color 0.15s ease;
+  transition:
+    opacity 0.15s ease,
+    background-color 0.15s ease;
   min-height: var(--touch-target-min);
 }
 
@@ -145,7 +141,7 @@
   flex-shrink: 0;
 }
 
-/* ── Properties grid ──────────────────────────────────────── */
+/* ── Properties grid: 1 → 2 → 3 → 4 col ─────────────────── */
 .grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -158,7 +154,14 @@
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-5);
+  }
+}
+
+@media (min-width: 1200px) {
   .grid {
     grid-template-columns: repeat(4, 1fr);
     gap: var(--space-6);

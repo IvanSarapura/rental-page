@@ -14,7 +14,9 @@
     "contact": "Contact",
     "newsletter": "Newsletter",
     "visitNewsletter": "Visit Newsletter",
-    "followUs": "Follow Us"
+    "followUs": "Follow Us",
+    "switchLanguage": "Switch to Spanish",
+    "languageLabel": "EN"
   },
   "Footer": {
     "quickLinks": "Quick Links",
@@ -63,6 +65,7 @@
     }
   },
   "PeaceOfMindSection": {
+    "eyebrow": "Why Choose Us",
     "title": "Giving you peace of mind",
     "easyBooking": {
       "title": "Easy Booking Process",
@@ -121,6 +124,7 @@
     "about": "About this space",
     "amenities": "Amenities",
     "gallery": "Gallery",
+    "priceLabel": "Price",
     "bookBtn": "Book this office",
     "unavailableBtn": "Currently unavailable",
     "reviews": "reviews",

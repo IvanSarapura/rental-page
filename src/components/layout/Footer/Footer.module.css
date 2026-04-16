@@ -170,21 +170,8 @@
   gap: var(--space-3);
 }
 
+/* A partir de sm: input + botón en fila */
 @media (min-width: 576px) {
-  .newsletterForm {
-    flex-direction: row;
-    align-items: stretch;
-    flex-wrap: wrap;
-  }
-}
-
-@media (min-width: 992px) {
-  .newsletterForm {
-    flex-direction: column;
-  }
-}
-
-@media (min-width: 1200px) {
   .newsletterForm {
     flex-direction: row;
     align-items: stretch;
@@ -289,6 +276,7 @@
   margin: 0;
   font-family: var(--font-poppins), "Poppins", sans-serif;
   font-size: 0.8125rem;
-  color: rgba(255, 255, 255, 0.4);
+  /* WCAG AA: ratio ~5.7:1 sobre fondo #171717 */
+  color: rgba(255, 255, 255, 0.55);
   text-align: center;
 }

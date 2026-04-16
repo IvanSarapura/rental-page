@@ -11,6 +11,7 @@ export default async function PeaceOfMindSection() {
     <section className={styles.section}>
       <Container>
         <header className={styles.header}>
+          <p className={styles.eyebrow}>{t("eyebrow")}</p>
           <h2 className={styles.title}>{t("title")}</h2>
         </header>
 

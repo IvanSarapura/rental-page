@@ -1,19 +1,32 @@
+/* ── Base navbar ─────────────────────────────────────────────────────────── */
 .navbar {
   padding: var(--navbar-padding-y) 0;
   padding-top: calc(var(--navbar-padding-y) + env(safe-area-inset-top, 0));
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 10;
+  z-index: var(--z-navbar);
+  transition:
+    background-color var(--transition-base),
+    box-shadow var(--transition-base);
 }
 
-/* ── Solid variant: used on all pages except the homepage ── */
+/* ── Solid variant: non-home pages or after scroll ───────────────────────── */
 .navbarSolid {
-  position: sticky;
-  left: unset;
-  right: unset;
   background: #ffffff;
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* ── Scrolled variant: home page after 80px scroll ───────────────────────── */
+.navbarScrolled {
+  box-shadow: var(--shadow-md);
+}
+
+/* ── Default (transparent/homepage): white text ──────────────────────────── */
+.logo,
+.navLink {
+  color: #ffffff;
 }
 
 .navbarSolid .logo,
@@ -25,12 +38,7 @@
   color: var(--color-foreground);
 }
 
-/* ── Default (transparent/homepage): white text ── */
-.logo,
-.navLink {
-  color: #ffffff;
-}
-
+/* ── Inner layout ────────────────────────────────────────────────────────── */
 .navbarInner {
   width: 100%;
   max-width: var(--container-max-width);
@@ -45,6 +53,7 @@
   min-width: 0;
 }
 
+/* ── Logo ────────────────────────────────────────────────────────────────── */
 .logo {
   font-family: var(--font-poppins), "Poppins", sans-serif;
   font-weight: 300;
@@ -59,9 +68,14 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  transition: opacity var(--transition-fast);
 }
 
-/* hamburger solo mobile */
+.logo:hover {
+  opacity: 0.8;
+}
+
+/* ── Hamburger button (mobile only) ──────────────────────────────────────── */
 .menuButton {
   min-width: var(--touch-target-min);
   min-height: var(--touch-target-min);
@@ -76,11 +90,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--space-2);
+  border-radius: var(--radius-md);
+  transition: opacity var(--transition-fast);
 }
 
 .menuButton:hover {
-  opacity: 0.85;
+  opacity: 0.8;
 }
 
 .menuButton:focus-visible {
@@ -89,18 +104,19 @@
 }
 
 .menuIcon {
-  font-size: 1.5rem;
-  line-height: 1;
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
-/* drawer overlay mobile */
+/* ── Mobile drawer ───────────────────────────────────────────────────────── */
 .navWrapper {
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 12;
+  z-index: var(--z-drawer);
   padding-top: calc(var(--navbar-padding-y) + env(safe-area-inset-top, 0));
   padding-bottom: calc(var(--space-6) + env(safe-area-inset-bottom, 0));
   padding-left: calc(var(--container-padding-x) + env(safe-area-inset-left, 0));
@@ -113,13 +129,20 @@
   opacity: 0;
   transform: translateX(100%);
   transition:
-    visibility 0.2s ease,
-    opacity 0.2s ease,
-    transform 0.2s ease;
+    visibility var(--transition-base),
+    opacity var(--transition-base),
+    transform var(--transition-base);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
 
+.navWrapperOpen {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ── Drawer header (logo + close) ────────────────────────────────────────── */
 .navHeader {
   display: flex;
   align-items: center;
@@ -135,6 +158,11 @@
   text-transform: uppercase;
   color: var(--color-foreground);
   text-decoration: none;
+  transition: opacity var(--transition-fast);
+}
+
+.navHeaderLogo:hover {
+  opacity: 0.8;
 }
 
 .navHeaderClose {
@@ -150,17 +178,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--space-2);
-}
-
-.navHeaderCloseIcon {
-  display: block;
-  width: 1.5rem;
-  height: 1.5rem;
+  border-radius: var(--radius-md);
+  transition: opacity var(--transition-fast);
 }
 
 .navHeaderClose:hover {
-  opacity: 0.85;
+  opacity: 0.7;
 }
 
 .navHeaderClose:focus-visible {
@@ -168,12 +191,7 @@
   outline-offset: 2px;
 }
 
-.navWrapperOpen {
-  visibility: visible;
-  opacity: 1;
-  transform: translateX(0);
-}
-
+/* ── Nav links ───────────────────────────────────────────────────────────── */
 .nav {
   display: flex;
   flex-direction: column;
@@ -186,39 +204,163 @@
   min-height: var(--touch-target-min);
   display: inline-flex;
   align-items: center;
+  position: relative;
+  transition: opacity var(--transition-fast);
 }
 
 .navLink:hover {
-  opacity: 0.8;
+  opacity: 0.7;
+}
+
+/* Active indicator — desktop underline */
+.navLink::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-base);
+}
+
+.navLink:hover::after {
+  transform: scaleX(1);
+}
+
+.navLinkActive::after {
+  transform: scaleX(1);
 }
 
 .mobileOnlyNavLink {
   display: none;
 }
 
+/* ── Desktop actions (lang + CTA) ────────────────────────────────────────── */
+.desktopActions {
+  display: none;
+}
+
+/* ── Mobile drawer footer (follow us + social) ───────────────────────────── */
+.navFooter {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.followTitle {
+  font-family: var(--font-poppins), "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: var(--color-foreground);
+  margin: 0;
+}
+
+.socialRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--touch-target-min);
+  height: var(--touch-target-min);
+  border-radius: var(--radius-md);
+  transition: opacity var(--transition-fast);
+}
+
+.socialLink:hover {
+  opacity: 0.7;
+}
+
+.socialIcon {
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* ── Language switcher ───────────────────────────────────────────────────── */
+.langBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  font-family: var(--font-poppins), "Poppins", sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  transition: opacity var(--transition-fast);
+}
+
+.langBtn:hover {
+  opacity: 0.7;
+}
+
+.langBtn:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.langCurrent {
+  font-weight: 700;
+}
+
+.langSeparator {
+  color: currentColor;
+  opacity: 0.4;
+}
+
+.langOther {
+  opacity: 0.5;
+}
+
+/* ── CTA button ──────────────────────────────────────────────────────────── */
 .cta {
   background-color: var(--color-primary);
   color: var(--color-on-primary);
   padding: var(--space-3) var(--space-6);
-  font-size: 1rem;
+  font-family: var(--font-poppins), "Poppins", sans-serif;
+  font-size: 0.9375rem;
   font-weight: 500;
-  border-radius: 0.25rem;
+  border-radius: var(--radius-md);
   min-height: var(--touch-target-min);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  align-self: flex-start;
-  margin-top: auto;
+  transition:
+    opacity var(--transition-fast),
+    transform var(--transition-fast);
 }
 
 .cta:hover {
-  opacity: 0.9;
+  opacity: 0.88;
+  transform: translateY(-1px);
 }
 
-/* drawer fondo claro → enlaces y logo oscuros */
+.cta:active {
+  transform: translateY(0);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────── */
+/* Mobile overrides                                                             */
+/* ─────────────────────────────────────────────────────────────────────────── */
 @media (max-width: 767px) {
   .navWrapper .navLink {
     color: var(--color-foreground);
+  }
+
+  /* Active indicator hidden on mobile (not needed in drawer) */
+  .navLink::after {
+    display: none;
   }
 
   .mobileOnlyNavLink {
@@ -226,48 +368,27 @@
   }
 
   .navHeader {
-    margin-bottom: var(--space-6);
+    margin-bottom: var(--space-4);
   }
 
-  /* ligera sangría para diferenciar lista de enlaces del logo */
   .nav {
     padding-left: var(--space-4);
-  }
-
-  .cta {
-    display: none;
   }
 
   .navFooter {
     margin-top: auto;
     padding-left: var(--space-4);
-    padding-right: var(--space-4);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
   }
 
-  .followTitle {
-    font-family: var(--font-poppins), "Poppins", sans-serif;
-    font-weight: 600;
-    font-size: 0.9375rem;
-    color: var(--color-foreground);
-  }
-
-  .socialRow {
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
-  }
-
-  .socialIcon {
-    display: block;
-    width: 1.5rem;
-    height: 1.5rem;
+  /* Hide desktop actions on mobile */
+  .desktopActions {
+    display: none !important;
   }
 }
 
-/* desktop: nav horizontal */
+/* ─────────────────────────────────────────────────────────────────────────── */
+/* Desktop: horizontal nav                                                      */
+/* ─────────────────────────────────────────────────────────────────────────── */
 @media (min-width: 768px) {
   .navHeader {
     display: none;
@@ -278,6 +399,10 @@
   }
 
   .menuButton {
+    display: none;
+  }
+
+  .mobileOnlyNavLink {
     display: none;
   }
 
@@ -295,6 +420,7 @@
     transform: none;
     transition: none;
     min-width: 0;
+    overflow: visible;
   }
 
   .navCenter {
@@ -315,12 +441,20 @@
     min-height: auto;
   }
 
-  .cta {
-    min-height: auto;
-    padding: 0.75rem 1.5rem;
-    font-size: 0.9375rem;
-    margin-top: 0;
-    align-self: auto;
-    display: inline-flex;
+  .desktopActions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    flex-shrink: 0;
+  }
+
+  /* White text on transparent navbar */
+  .langBtn {
+    color: #ffffff;
+  }
+
+  /* Dark text on solid navbar */
+  .navbarSolid .langBtn {
+    color: var(--color-foreground);
   }
 }

@@ -14,7 +14,9 @@
     "contact": "Contacto",
     "newsletter": "Boletín",
     "visitNewsletter": "Ver Boletín",
-    "followUs": "Síguenos"
+    "followUs": "Síguenos",
+    "switchLanguage": "Cambiar a inglés",
+    "languageLabel": "ES"
   },
   "Footer": {
     "quickLinks": "Accesos Rápidos",
@@ -63,6 +65,7 @@
     }
   },
   "PeaceOfMindSection": {
+    "eyebrow": "Por qué elegirnos",
     "title": "Para que trabajes con tranquilidad",
     "easyBooking": {
       "title": "Reserva Fácil",
@@ -121,6 +124,7 @@
     "about": "Sobre este espacio",
     "amenities": "Amenidades",
     "gallery": "Galería",
+    "priceLabel": "Precio",
     "bookBtn": "Reservar esta oficina",
     "unavailableBtn": "No disponible actualmente",
     "reviews": "reseñas",

@@ -51,7 +51,7 @@
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  border-radius: 1.25rem;
+  border-radius: var(--radius-xl);
   overflow: hidden;
   flex-shrink: 0;
   background: var(--color-surface-alt);

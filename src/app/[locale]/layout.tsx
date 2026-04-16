@@ -11,7 +11,7 @@ export default async function LocaleLayout({ children }: LocaleLayoutProps) {
   return (
     <>
       <Navbar />
-      {children}
+      <main style={{ paddingTop: "var(--navbar-height)" }}>{children}</main>
       <Footer />
     </>
   );

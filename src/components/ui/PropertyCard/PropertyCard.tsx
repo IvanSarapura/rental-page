@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import type { Property } from "@/types/property";
 import styles from "./PropertyCard.module.css";
@@ -8,6 +11,9 @@ type PropertyCardProps = {
 };
 
 export default function PropertyCard({ property }: PropertyCardProps) {
+  const locale = useLocale();
+  const t = useTranslations("common");
+
   const {
     id,
     title,
@@ -23,6 +29,8 @@ export default function PropertyCard({ property }: PropertyCardProps) {
     imagePosition,
     tag,
   } = property;
+
+  const formattedPrice = new Intl.NumberFormat(locale).format(price);
 
   return (
     <Link href={`/property/${id}`} className={styles.cardLink}>
@@ -100,14 +108,14 @@ export default function PropertyCard({ property }: PropertyCardProps) {
                   strokeLinejoin="round"
                 />
               </svg>
-              {capacity} people
+              {capacity} {t("people")}
             </span>
           </div>
 
           <div className={styles.footer}>
             <p className={styles.price}>
               {currency}
-              {price.toLocaleString()}
+              {formattedPrice}
               <span className={styles.pricePeriod}> / {period}</span>
             </p>
             <div className={styles.rating}>

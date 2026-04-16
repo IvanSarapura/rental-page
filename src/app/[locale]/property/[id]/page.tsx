@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import Container from "@/components/ui/Container";
 import { getAllPropertyIds, getPropertyById, resolveAmenities } from "@/services/propertyService";
+import StickyBookBar from "./StickyBookBar";
 import styles from "./PropertyDetail.module.css";
 
 // ─── Static generation ────────────────────────────────────────────────────────
@@ -178,16 +179,30 @@ export default async function PropertyPage({ params }: Props) {
               <span className={styles.pricePeriod}>/ {period}</span>
             </div>
 
-            {/* CTA */}
-            <Link
-              href={available ? `/booking/${id}` : "#"}
-              className={`${styles.bookBtn} ${!available ? styles.bookBtnDisabled : ""}`}
-              aria-disabled={!available}
-            >
-              {available ? t("bookBtn") : t("unavailableBtn")}
-            </Link>
+            {/* CTA — sentinel id allows StickyBookBar to detect when this is off-screen */}
+            <div id="book-btn-sentinel">
+              <Link
+                href={available ? `/booking/${id}` : "#"}
+                className={`${styles.bookBtn} ${!available ? styles.bookBtnDisabled : ""}`}
+                aria-disabled={!available}
+              >
+                {available ? t("bookBtn") : t("unavailableBtn")}
+              </Link>
+            </div>
           </aside>
         </div>
+
+        {/* Sticky bottom bar on mobile — appears when CTA scrolls out of view */}
+        <StickyBookBar
+          propertyId={id}
+          price={price}
+          currency={currency}
+          period={period}
+          available={available}
+          bookLabel={t("bookBtn")}
+          unavailableLabel={t("unavailableBtn")}
+          priceLabel={t("priceLabel")}
+        />
 
         {/* ── Description ── */}
         <section className={styles.contentSection}>

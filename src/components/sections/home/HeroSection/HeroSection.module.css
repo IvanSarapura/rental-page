@@ -1,10 +1,12 @@
-/* hero full viewport — svh fija el tamaño al viewport con URL bar visible,
-   evitando el salto de layout cuando la barra del navegador desaparece en mobile */
+/* ── Hero: full viewport ─────────────────────────────────────────────────── */
 .hero {
   position: relative;
   width: 100%;
-  min-height: 100vh; /* fallback navegadores sin soporte svh */
-  min-height: 100svh; /* small viewport height: no cambia al ocultar la URL bar */
+  /* Cancels the layout padding-top so the hero background extends behind
+     the transparent fixed navbar, covering the full viewport from top:0. */
+  margin-top: calc(-1 * var(--navbar-height));
+  min-height: 100vh; /* fallback */
+  min-height: 100svh; /* small viewport: URL bar no hace salto de layout */
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -14,14 +16,14 @@
 
 @media (min-width: 768px) {
   .hero {
-    padding-bottom: 5%; /* Div Search Card and Title Controller */
+    padding-bottom: 5%;
   }
 }
 
-/* crop desde arriba, fondo siempre visible */
+/* ── Background image ────────────────────────────────────────────────────── */
 .image {
   object-fit: cover;
-  object-position: 34% bottom; /* Controller to crop image */
+  object-position: 34% bottom;
 }
 
 @media (min-width: 768px) {
@@ -30,20 +32,21 @@
   }
 }
 
-/* overlay 0% arriba → 40% abajo */
+/* ── Gradient overlay — cubre más para asegurar contraste del título ──────── */
 .gradientOverlay {
   position: absolute;
   inset: 0;
   z-index: 0;
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0) 35%,
+    rgba(0, 0, 0, 0) 20%,
+    rgba(0, 0, 0, 0.12) 45%,
     rgba(0, 0, 0, var(--hero-overlay-opacity)) var(--hero-overlay-stop)
   );
   pointer-events: none;
 }
 
-/* mobile: search arriba, título abajo. misma alineación izquierda. desktop: centrado */
+/* ── Card overlay: título arriba, search abajo en mobile ─────────────────── */
 .cardOverlay {
   position: relative;
   z-index: 1;
@@ -66,7 +69,7 @@
   }
 }
 
-/* mobile: 100% ancho para ocupar todo el espacio. desktop: centrado */
+/* ── Title wrapper ───────────────────────────────────────────────────────── */
 .titleWrapper {
   width: 100%;
   display: flex;
@@ -75,6 +78,8 @@
   flex: 1;
   min-height: 0;
   align-self: stretch;
+  /* Animación de entrada: aparece desde abajo con fade */
+  animation: heroFadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
 }
 
 @media (min-width: 768px) {
@@ -84,6 +89,7 @@
   }
 }
 
+/* ── H1 ──────────────────────────────────────────────────────────────────── */
 .title {
   margin: 0;
   width: 100%;
@@ -93,7 +99,7 @@
   font-style: normal;
   font-weight: 800;
   line-height: 1.25;
-  color: var(--Color-Text-Text, #fff);
+  color: var(--color-text-inverse, #fff);
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
@@ -115,7 +121,7 @@
   }
 }
 
-/* mobile: 100% ancho para ocupar todo el espacio (simetría). desktop: centrado y max-width */
+/* ── Search wrapper ──────────────────────────────────────────────────────── */
 .searchWrapper {
   width: 100%;
   max-width: 100%;
@@ -125,6 +131,8 @@
   flex-direction: column;
   min-height: 0;
   align-self: stretch;
+  /* Animación ligeramente retrasada respecto al título */
+  animation: heroFadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.28s both;
 }
 
 @media (min-width: 768px) {
@@ -137,20 +145,20 @@
   }
 }
 
-/* mobile: más altura, padding y ocupa espacio disponible. desktop: padding normal */
+/* ── Search card ─────────────────────────────────────────────────────────── */
 .searchCard {
   width: 100%;
   min-width: 0;
   min-height: 3.5rem;
   background-color: #ffffff;
-  border-radius: 0.75rem;
+  border-radius: var(--radius-xl);
   padding: var(--space-4) var(--space-5);
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-4);
-  box-shadow: 0 4.63px 21.41px rgba(0, 0, 0, 0.04);
+  box-shadow: var(--shadow-xl);
   box-sizing: border-box;
   flex: 1;
 }
@@ -160,9 +168,11 @@
     min-height: 0;
     flex: none;
     padding: var(--space-2);
+    border-radius: var(--radius-xl);
   }
 }
 
+/* ── Mobile search elements ──────────────────────────────────────────────── */
 .searchMobileText {
   flex: 1 1 0;
   min-width: 0;
@@ -178,6 +188,7 @@
   filter: brightness(0) saturate(100%);
 }
 
+/* ── Desktop search elements ─────────────────────────────────────────────── */
 .searchDesktopInput {
   display: none;
 }
@@ -220,11 +231,12 @@
 }
 
 .searchPlaceholder {
-  color: #73788c;
+  color: var(--color-muted);
   font-size: 0.9375rem;
   line-height: 1.5;
 }
 
+/* ── Search buttons ──────────────────────────────────────────────────────── */
 .btnSecondary {
   font-family: var(--font-poppins), "Poppins", sans-serif;
   font-weight: 500;
@@ -234,12 +246,13 @@
   padding: 0.5rem 1.25rem;
   font-size: 0.9375rem;
   line-height: 1.5;
-  border-radius: 0.75rem;
+  border-radius: var(--radius-md);
   cursor: pointer;
+  transition: opacity var(--transition-fast);
 }
 
 .btnSecondary:hover {
-  opacity: 0.9;
+  opacity: 0.85;
 }
 
 .btnPrimary {
@@ -251,10 +264,31 @@
   padding: 0.5rem 1.5rem;
   font-size: 0.9375rem;
   line-height: 1.5;
-  border-radius: 0.75rem;
+  border-radius: var(--radius-md);
   cursor: pointer;
+  transition: opacity var(--transition-fast);
 }
 
 .btnPrimary:hover {
-  opacity: 0.9;
+  opacity: 0.88;
+}
+
+/* ── Entrance animation ──────────────────────────────────────────────────── */
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(1.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Respeta preferencia de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  .titleWrapper,
+  .searchWrapper {
+    animation: none;
+  }
 }
